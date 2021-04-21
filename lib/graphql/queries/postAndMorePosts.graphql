@@ -1,0 +1,33 @@
+query PostAndMorePosts($id: ID!, $idType: PostIdType!, $isRevision: Boolean!) {
+    post(id: $id, idType: $idType) {
+        ...PostFields
+        content
+        seo {
+            ...SeoFragment
+        }
+        revisions(
+            first: 1
+            where: { orderby: { field: MODIFIED, order: DESC } }
+        ) @include(if: $isRevision) {
+            edges {
+                node {
+                    title
+                    excerpt
+                    content
+                    author {
+                        node {
+                            ...AuthorFields
+                        }
+                    }
+                }
+            }
+        }
+    }
+    posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+        edges {
+            node {
+                ...PostFields
+            }
+        }
+    }
+}
