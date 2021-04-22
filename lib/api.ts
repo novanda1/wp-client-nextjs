@@ -8,7 +8,7 @@ import { getSdk } from '../lib/generated/graphql'
 import useSWR from 'swr'
 import { useMemo } from 'react'
 
-interface FetcherArgs {
+type FetcherArgs = {
     query: RequestDocument
     variables?: object
     isUseToken?: boolean,
@@ -64,8 +64,8 @@ export const fetchData = async (args: FetcherArgs) => {
 }
 
 export const fetchSWR = (args: FetcherArgs) => {
-    const params = useMemo(() => args, [])
-    const { data, error } = useSWR([params], fetcher, {
+    // const params = useMemo(() => args, [])
+    const { data, error } = useSWR([args], fetcher, {
         initialData: args.initialData ?? args.initialData
     })
 
