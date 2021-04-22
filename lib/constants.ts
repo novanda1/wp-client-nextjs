@@ -7,3 +7,4 @@ export const SITE_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
 export const HOME_OG_IMAGE_URL = "/og-image.jpg";
 export const WORDPRESS_PREVIEW_SECRET =
   process.env.NEXT_PUBLIC_WORDPRESS_PREVIEW_SECRET;
+export const COOKIES_TOKEN_NAME = 'wpt'

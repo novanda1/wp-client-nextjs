@@ -20,6 +20,8 @@ const retrieveToken = () => Cookies.get(COOKIES_TOKEN_NAME)
 const setToken = (token) => Cookies.set(COOKIES_TOKEN_NAME, token)
 const clearToken = () => Cookies.remove(COOKIES_TOKEN_NAME)
 
+const client = new GraphQLClient(API_URL)
+
 const refreshToken = async () => {
     const sdk = getSdk(client)
     client.setHeader('Authorization', '')
@@ -32,7 +34,6 @@ const refreshToken = async () => {
     setToken(res.login.authToken)
 }
 
-const client = new GraphQLClient(API_URL)
 
 export const fetcher = async (args: FetcherArgs) => {
     if (args.isUseToken)
@@ -51,7 +52,7 @@ export const fetchData = async (args: FetcherArgs) => {
                 if (response?.response)
                     if ('errors' in response.response) {
                         await refreshToken()
-                        Router.reload()
+                        // Router.reload()
                     }
 
                 resolve(response)

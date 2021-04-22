@@ -12520,7 +12520,7 @@ export type PostsSlugQuery = (
 
 export type PreviewPostQueryVariables = Exact<{
   id: Scalars['ID'];
-  idType?: Maybe<PostIdType>;
+  idType: PostIdType;
 }>;
 
 
@@ -12690,7 +12690,7 @@ export const PostsSlugDocument = gql`
 }
     `;
 export const PreviewPostDocument = gql`
-    query PreviewPost($id: ID!, $idType: PostIdType) {
+    query PreviewPost($id: ID!, $idType: PostIdType!) {
   post(id: $id, idType: $idType) {
     databaseId
     slug

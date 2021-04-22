@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
+import { useMemo } from "react";
 import {
   Container,
   PostBody,
@@ -20,9 +21,10 @@ import {
 export default function Post(props) {
   const id = props.uri
   const { data, isLoading, isError } = fetchSWR({
-      variables: { id, idType: 'SLUG', isRevision: false },
+      variables: useMemo(() => {return { id, idType: 'SLUG', isRevision: false }}, []),
       query: PostAndMorePostsDocument,
-      initialData: props.data
+      initialData: props.data,
+      isUseToken: true
   })
 
   const post = data?.post
@@ -157,7 +159,11 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
     const data  = await fetchData({
         query: PostAndMorePostsDocument,
         variables: { id ,idType, isRevision },
+        // isUseToken: true
     })
+
+    console.log(data);
+    
 
     return {
         props: {
@@ -165,7 +171,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
             uri: params.slug,
             data: data,
         },
-    }
+    }   
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
