@@ -1,5 +1,5 @@
 import tw from 'twin.macro'
-import { styled } from '../../stitches.config'
+import { styled, css } from '../../stitches.config'
 import { Container } from '..'
 
 const AlertContainer = styled('div', {
@@ -13,16 +13,18 @@ const AlertContainer = styled('div', {
     },
 })
 
+const AlertContentSt = css(tw`py-2 text-center text-sm`)
+const AlertLinkSt = css(
+    tw`underline hover:text-cyan duration-200 transition-colors`
+)
+
 export default function Alert({ preview }) {
     return (
         <AlertContainer preview={preview}>
             <Container>
-                <div tw="py-2 text-center text-sm">
+                <div className={AlertContentSt()}>
                     This is page is a preview.{' '}
-                    <a
-                        href="/api/exit-preview"
-                        tw="underline hover:text-cyan duration-200 transition-colors"
-                    >
+                    <a className={AlertLinkSt()} href="/api/exit-preview">
                         Click here
                     </a>{' '}
                     to exit preview mode.

@@ -1,18 +1,19 @@
 import tw from 'twin.macro'
+import { css } from '../../stitches.config'
 import Meta from '../Base/Meta'
 import { Alert } from '..'
 import React from 'react'
 
-const MainContainer = tw.div`min-h-screen`
+const MainContainer = css(tw`min-h-screen`)
 
 const Layout: React.FC<{ preview?: boolean }> = ({ preview, children }) => {
     return (
         <>
             <Meta />
-            <MainContainer>
+            <div className={MainContainer()}>
                 <Alert preview={preview} />
                 <main>{children}</main>
-            </MainContainer>
+            </div>
         </>
     )
 }

@@ -1,19 +1,21 @@
-import 'twin.macro'
+import tw from 'twin.macro'
+import { Span } from '..'
+import { css } from '../../stitches.config'
 
 const Categories: React.FC<{ categories: any }> = ({ categories }) => {
     return (
-        <span tw="ml-1">
+        <Span css={tw`ml-1`}>
             under
             {categories.edges.length > 0 ? (
                 categories.edges.map((category, index) => (
-                    <span key={index} tw="ml-1">
+                    <Span key={index} css={tw`ml-1`}>
                         {category.node.name}
-                    </span>
+                    </Span>
                 ))
             ) : (
-                <span tw="ml-1">{categories.edges.node.name}</span>
+                <Span css={tw`ml-1`}>{categories.edges.node.name}</Span>
             )}
-        </span>
+        </Span>
     )
 }
 
