@@ -9,9 +9,6 @@ export default function Home({initialData}) {
     const { data, isError, isLoading } = fetchSWR({ query: PostsDocument, initialData })
     const posts = data?.posts
 
-console.log(initialData);
-
-
     const heroPost = posts?.edges[0].node
     const morePosts = posts?.edges?.slice(1)
 
