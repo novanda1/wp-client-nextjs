@@ -1,4 +1,3 @@
-import polly from 'polly-js'
 import { GraphQLClient } from 'graphql-request'
 import { API_URL } from './constants'
 import { RequestDocument } from 'graphql-request/dist/types'
@@ -12,7 +11,8 @@ import { useMemo } from 'react'
 interface FetcherArgs {
     query: RequestDocument
     variables?: object
-    isUseToken?: boolean
+    isUseToken?: boolean,
+    initialData?: object
 }
 
 const COOKIES_TOKEN_NAME = 'wpt'
@@ -51,7 +51,7 @@ export const fetchData = async (args: FetcherArgs) => {
                 if (response?.response)
                     if ('errors' in response.response) {
                         await refreshToken()
-                        // Router.reload()
+                        Router.reload()
                     }
 
                 resolve(response)
@@ -65,7 +65,9 @@ export const fetchData = async (args: FetcherArgs) => {
 
 export const fetchSWR = (args: FetcherArgs) => {
     const params = useMemo(() => args, [])
-    const { data, error } = useSWR([params], fetchData)
+    const { data, error } = useSWR([params], fetcher, {
+        initialData: args.initialData ?? args.initialData
+    })
 
     return {
         data: data,
