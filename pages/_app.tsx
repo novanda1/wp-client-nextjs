@@ -1,17 +1,18 @@
 import globalStyles from "../styles/globalStyles";
 import { DefaultSeo } from "next-seo";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "../lib/constants";
 
 const App = ({ Component, pageProps }) => {
   globalStyles();
   return (
     <>
       <DefaultSeo
-        title={process.env.SITE_NAME + " - " + process.env.SITE_DESCRIPTION}
+        title={SITE_NAME + " - " + SITE_DESCRIPTION}
         openGraph={{
           type: "website",
           locale: "en_IE",
-          url: process.env.SITE_URL || "http://localhost:3000",
-          site_name: process.env.SITE_NAME,
+          url: SITE_URL,
+          site_name: SITE_NAME,
         }}
         twitter={{
           handle: "@handle",
