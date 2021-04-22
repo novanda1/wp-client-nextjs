@@ -18,7 +18,7 @@ const CoverImage: React.FC<{
   slug?: string;
 }> = ({ title, coverImage, slug }) => {
   return (
-    <Box tw="sm:mx-0">
+    <Box tws={tw`sm:mx-0`}>
       {slug ? (
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
           <a>

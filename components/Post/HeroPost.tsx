@@ -22,14 +22,17 @@ export default function HeroPost({
 }) {
   return (
     <section>
-      <Box tw="mb-8 md:mb-16">
+      <Box tws={tw`mb-8 md:mb-16`}>
         {coverImage && (
           <CoverImage title={title} coverImage={coverImage} slug={slug} />
         )}
       </Box>
-      <Box tw="md:grid md:grid-cols-2 md:gap-16 lg:gap-8 mb-20 md:mb-28">
+      <Box tws={tw`md:grid md:grid-cols-2 md:gap-16 lg:gap-8 mb-20 md:mb-28`}>
         <div>
-          <Heading as="h3" tw="mb-4 text-4xl lg:text-6xl leading-tight">
+          <Heading
+            element="h3"
+            tws={tw`mb-4 text-4xl lg:text-6xl leading-tight`}
+          >
             <Link as={`/posts/${slug}`} href="/posts/[slug]">
               <a
                 tw="hover:underline"
@@ -37,9 +40,9 @@ export default function HeroPost({
               />
             </Link>
           </Heading>
-          <div tw="mb-4 md:mb-0 text-lg">
+          <Box tws={tw`mb-4 md:mb-0 text-lg`}>
             <Date dateString={date} />
-          </div>
+          </Box>
         </div>
         <div>
           <div

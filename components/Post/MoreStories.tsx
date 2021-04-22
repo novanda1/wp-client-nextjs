@@ -1,13 +1,13 @@
-import 'twin.macro'
-import { PostPreview } from '..'
+import tw from 'twin.macro'
+import { Box, Heading, PostPreview } from '..'
 
 export default function MoreStories({ posts }) {
     return (
         <section>
-            <h2 tw="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+            <Heading element="h2" tws={tw`mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight`}>
                 More Stories
-            </h2>
-            <div tw="grid grid-cols-1 md:grid-cols-2 md:col-gap-16 lg:col-gap-32 row-gap-20 md:row-gap-32 mb-32">
+            </Heading>
+            <Box tws={tw`grid grid-cols-1 md:grid-cols-2 md:col-gap-16 lg:col-gap-32 row-gap-20 md:row-gap-32 mb-32`}>
                 {posts.map(({ node }) => (
                     <PostPreview
                         key={node.slug}
@@ -19,7 +19,7 @@ export default function MoreStories({ posts }) {
                         excerpt={node.excerpt}
                     />
                 ))}
-            </div>
+            </Box>
         </section>
     )
 }
