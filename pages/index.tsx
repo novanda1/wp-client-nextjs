@@ -2,12 +2,15 @@ import 'twin.macro'
 import { NextSeo } from 'next-seo'
 import { Layout, Container, HeroPost, MoreStories, Intro } from '../components'
 import { PostsDocument } from '../lib/generated/graphql'
-import useSWR from 'swr'
 import { fetchData, fetchSWR } from '../lib/api'
+import { GetStaticProps } from 'next'
 
-export default function Home() {
-    const { data, isError, isLoading } = fetchSWR({ query: PostsDocument })
+export default function Home({initialData}) {
+    const { data, isError, isLoading } = fetchSWR({ query: PostsDocument, initialData })
     const posts = data?.posts
+
+console.log(initialData);
+
 
     const heroPost = posts?.edges[0].node
     const morePosts = posts?.edges?.slice(1)
@@ -66,26 +69,12 @@ export default function Home() {
     )
 }
 
-// export async function getStaticProps() {
-//     const initialData = await fetchData({ query: PostsDocument })
+export const getStaticProps:GetStaticProps = async () => {
+    const initialData = await fetchData({ query: PostsDocument })
 
-//     return {
-//         props: {
-//             initialData,
-//         },
-//     }
-// }
-
-// export default function Home() {
-//     const params = useMemo(() => {
-//         return {
-//             query: PreviewPostDocument,
-//             variables: { id: '37', idType: PostIdType.DatabaseId },
-//             isUseToken: true,
-//         }
-//     }, [])
-
-//     const { data } = useSWR([params], fetchData)
-
-//     return <div>halo</div>
-// }
+    return {
+        props: {
+            initialData,
+        },
+    }
+}
