@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 import { getSdk } from '../lib/generated/graphql';
 import useSWR from 'swr';
 import { useMemo } from 'react';
-import { FetcherArgs } from './type/FetchArgs';
+import { FetcherArgs } from './types/FetchArgs';
 
 const COOKIES_TOKEN_NAME = 'wpt';
 const retrieveToken = () => Cookies.get(COOKIES_TOKEN_NAME);

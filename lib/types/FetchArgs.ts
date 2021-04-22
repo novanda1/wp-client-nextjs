@@ -1,8 +1,8 @@
 import { RequestDocument, Variables } from 'graphql-request/dist/types';
 
 export type FetcherArgs = {
-    query: RequestDocumentcument;
-    variables?: Variablesables;
+    query: RequestDocument;
+    variables?: Variables;
     isUseToken?: boolean;
     initialData?: any;
 };
