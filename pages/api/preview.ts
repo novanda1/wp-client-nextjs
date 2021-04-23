@@ -1,7 +1,6 @@
-import { fetchData, fetcher } from '../../lib/api';
+import { fetcher } from '../../lib/api';
 import { getSdk, GetTokenDocument, PostIdType, PreviewPostDocument } from '../../lib/generated/graphql';
 import { WORDPRESS_PREVIEW_SECRET,COOKIES_TOKEN_NAME, API_URL } from '../../lib/constants';
-import { serialize } from 'cookie';
 import { GraphQLClient } from 'graphql-request'
 
 export default async function preview(req, res) {
@@ -37,6 +36,7 @@ export default async function preview(req, res) {
             slug: post.slug,
             status: post.status,
         },
+        token: getToken.login?.authToken
     });
 
     // Redirect to the path from the fetched post

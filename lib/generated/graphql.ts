@@ -12532,6 +12532,20 @@ export type PreviewPostQuery = (
   )> }
 );
 
+export type UserExpiredTokenQueryVariables = Exact<{
+  id: Scalars['ID'];
+  idType: UserNodeIdTypeEnum;
+}>;
+
+
+export type UserExpiredTokenQuery = (
+  { __typename?: 'RootQuery' }
+  & { user?: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'jwtAuthExpiration'>
+  )> }
+);
+
 export const AuthorFieldsFragmentDoc = gql`
     fragment AuthorFields on User {
   name
@@ -12698,6 +12712,13 @@ export const PreviewPostDocument = gql`
   }
 }
     `;
+export const UserExpiredTokenDocument = gql`
+    query UserExpiredToken($id: ID!, $idType: UserNodeIdTypeEnum!) {
+  user(id: $id, idType: $idType) {
+    jwtAuthExpiration
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 
@@ -12723,6 +12744,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     PreviewPost(variables: PreviewPostQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PreviewPostQuery> {
       return withWrapper(() => client.request<PreviewPostQuery>(PreviewPostDocument, variables, requestHeaders));
+    },
+    UserExpiredToken(variables: UserExpiredTokenQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UserExpiredTokenQuery> {
+      return withWrapper(() => client.request<UserExpiredTokenQuery>(UserExpiredTokenDocument, variables, requestHeaders));
     }
   };
 }

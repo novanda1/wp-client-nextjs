@@ -1,6 +1,7 @@
+import { GraphQLClient } from 'graphql-request';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import {
     Container,
     PostBody,
@@ -12,11 +13,13 @@ import {
     PostTitle,
     Tags,
 } from '../../components';
-import { fetchData, fetchStatic, fetchSWR } from '../../lib/api';
-import { PostAndMorePostsDocument, PostsSlugDocument } from '../../lib/generated/graphql';
+import { fetchData, fetchStatic, fetchSWR, refreshToken, retrieveToken } from '../../lib/api';
+import { API_URL, API_USERNAME } from '../../lib/constants';
+import { PostAndMorePostsDocument, PostsSlugDocument, UserExpiredTokenDocument, UserNodeIdTypeEnum } from '../../lib/generated/graphql';
 
 export default function Post(props) {
     const id = props.uri;
+    const [initialData, setInitialData] = useState(props.data)    
 
     const variablesMemo = useMemo(() => {
         return { id, idType: 'SLUG', isRevision: false };
@@ -24,8 +27,8 @@ export default function Post(props) {
     const { data, isLoading, isError } = fetchSWR({
         variables: variablesMemo,
         query: PostAndMorePostsDocument,
-        initialData: props.data,
-        isUseToken: true,
+        initialData: initialData,
+        isUseToken: props.preview,
     });
 
     const post = data?.post;
@@ -141,11 +144,26 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
     const id = isDraft ? postPreview.id : params.slug;
     const idType = isDraft ? 'DATABASE_ID' : 'SLUG';
 
+    /**
+     * check token expired
+     * and set preview to false
+     */
+    // const client = new GraphQLClient(API_URL);
+    
+    // need to use token when check expired token
+    // client.setHeader('Authorization', `Bearer ${retrieveToken()}`)
+    // const exp = await client.request(UserExpiredTokenDocument, {id: API_USERNAME, idType: UserNodeIdTypeEnum.Username})
+    // const expDate = exp.user?.jwtAuthExpiration
+
+    // if(Date.now() == expDate * 1000) {
+    //     preview = false
+    // }
+
     const data = await fetchStatic({
         query: PostAndMorePostsDocument,
         variables: { id, idType, isRevision },
         isUseToken: preview ? true : false,
-    });
+    }, preview && previewData?.token)
 
     return {
         props: {
@@ -161,6 +179,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
         paths: [...posts.edges.map(({ node }) => `/posts/${node.slug}`)],
-        fallback: true,
+        fallback: false,
     };
 };

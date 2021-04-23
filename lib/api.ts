@@ -1,23 +1,24 @@
 import { GraphQLClient } from 'graphql-request';
-import { API_URL } from './constants';
+import { API_URL, API_USERNAME } from './constants';
 import { RequestDocument, Variables } from 'graphql-request/dist/types';
 import Router from 'next/router';
 
 import Cookies from 'js-cookie';
-import { getSdk } from '../lib/generated/graphql';
+import { getSdk, UserExpiredTokenDocument, UserNodeIdTypeEnum } from '../lib/generated/graphql';
 import useSWR from 'swr';
 import { useMemo } from 'react';
 import { FetcherArgs } from './type/FetchArgs';
+import { Configuration, Fetcher } from 'swr/dist/types';
 
 const COOKIES_TOKEN_NAME = 'wpt';
-const retrieveToken = () => Cookies.get(COOKIES_TOKEN_NAME);
+export const retrieveToken = () => Cookies.get(COOKIES_TOKEN_NAME);
 const setToken = (token) => Cookies.set(COOKIES_TOKEN_NAME, token);
 const clearToken = () => Cookies.remove(COOKIES_TOKEN_NAME);
 
 const client = new GraphQLClient(API_URL);
 const sdk = getSdk(client);
 
-const refreshToken = async () => {
+export const refreshToken = async () => {
     client.setHeader('Authorization', '');
 
     const res = await sdk.getToken({
@@ -26,6 +27,8 @@ const refreshToken = async () => {
     });
 
     setToken(res.login.authToken);
+
+    return res.login.authToken
 };
 
 export const fetcher = async (args: FetcherArgs) => {
@@ -55,10 +58,23 @@ export const fetchData = async (args: FetcherArgs) => {
 };
 
 export const fetchSWR = (args: FetcherArgs) => {
+    let token = retrieveToken()
+
+    if(args.isUseToken) {
+        //  refreshToken()
+         client.setHeader('Authorization', `Bearer ${token}`);
+    }
     // const params = useMemo(() => args, [])
-    const { data, error } = useSWR([args], fetcher, {
-        initialData: args.initialData ?? args.initialData,
-    });
+    const options: {onError: any, shouldRetryOnError: boolean, initialData?: object} = {
+        onError: () => {
+            token = refreshToken()
+        },
+        shouldRetryOnError: true
+    }
+
+    if(args.initialData) options.initialData = args.initialData
+
+    const { data, error } = useSWR([args], fetcher, options);
 
     return {
         data: data,
@@ -67,18 +83,22 @@ export const fetchSWR = (args: FetcherArgs) => {
     };
 };
 
-export const fetchStatic = async (args: FetcherArgs) => {
-    let token: string;
+export const fetchStatic = async (args: FetcherArgs, token: string ) => {
+    /**
+     * this fetch method called after
+     * access /api page
+     * and already have token
+     */
     if (args.isUseToken) {
-        const getToken = await sdk.getToken({
-            username: 'admin',
-            password: 'admin',
-        });
-
-        token = getToken.login.authToken;
-        // setToken(token);
-
         client.setHeader('Authorization', `Bearer ${token}`);
+
+        const exp = await client.request(UserExpiredTokenDocument, {id: API_USERNAME, idType: UserNodeIdTypeEnum.Username})
+        const expDate = exp.user?.jwtAuthExpiration
+
+        if(Date.now() == expDate * 1000) {
+            await refreshToken()
+            client.setHeader('Authorization', `Bearer ${retrieveToken()}`);
+        }
     }
 
     const data = await client.request(args.query, args.variables);
