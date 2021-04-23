@@ -1,14 +1,11 @@
 import { GraphQLClient } from 'graphql-request';
 import { API_URL, API_USERNAME } from './constants';
-import { RequestDocument, Variables } from 'graphql-request/dist/types';
 import Router from 'next/router';
 
 import Cookies from 'js-cookie';
 import { getSdk, UserExpiredTokenDocument, UserNodeIdTypeEnum } from '../lib/generated/graphql';
 import useSWR from 'swr';
-import { useMemo } from 'react';
-import { FetcherArgs } from './type/FetchArgs';
-import { Configuration, Fetcher } from 'swr/dist/types';
+import { FetcherArgs } from './types/FetchArgs';
 
 const COOKIES_TOKEN_NAME = 'wpt';
 export const retrieveToken = () => Cookies.get(COOKIES_TOKEN_NAME);
@@ -45,7 +42,7 @@ export const fetchData = async (args: FetcherArgs) => {
                 if (response?.response)
                     if ('errors' in response.response) {
                         await refreshToken();
-                        // Router.reload()
+                        Router.reload();
                     }
 
                 resolve(response);
