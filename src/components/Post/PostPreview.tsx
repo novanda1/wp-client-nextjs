@@ -22,7 +22,7 @@ const PostPreview: React.FC<SinglePostType> = ({ title, coverImage, date, excerp
                 <CoverImage title={title} coverImage={coverImage} slug={slug} />
             </Box>
             <Heading element="h3" tws={tw`text-3xl mb-3 leading-snug`}>
-                <Link as={`/posts/${slug}`} href="/posts/[slug]">
+                <Link as={`/post/${slug}`} href="/post/[slug]">
                     <a className={LinkSt()} dangerouslySetInnerHTML={{ __html: title }} />
                 </Link>
             </Heading>

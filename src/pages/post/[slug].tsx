@@ -52,7 +52,7 @@ const Post: React.FC<PostPropsInterface> = ({ data: { post, posts }, preview, ur
     } = post?.seo || {};
 
     const currentLocation = process.browser ? window.location.origin : null;
-    const opengraphUrl = (process.env.SITE_URL ? process.env.SITE_URL : currentLocation) + '/posts/' + uri;
+    const opengraphUrl = (process.env.SITE_URL ? process.env.SITE_URL : currentLocation) + '/post/' + uri;
 
     if (isLoading && !post) return;
     <Layout preview={preview}>
@@ -173,7 +173,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const { posts } = await fetchData({ query: PostsSlugDocument, variables: { morePostLength: 3 } });
 
     return {
-        paths: [...posts.edges.map(({ node }) => `/posts/${node.slug}`)],
+        paths: [...posts.edges.map(({ node }) => `/post/${node.slug}`)],
         fallback: false,
     };
 };

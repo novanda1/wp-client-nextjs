@@ -21,7 +21,7 @@ const CoverImage: React.FC<{
     return (
         <Box tws={tw`sm:mx-0`}>
             {slug ? (
-                <Link as={`/posts/${slug}`} href="/posts/[slug]">
+                <Link as={`/post/${slug}`} href="/post/[slug]">
                     <a>
                         <Image src={coverImage?.sourceUrl} hasHover alt={title} />
                     </a>
