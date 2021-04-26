@@ -19,18 +19,23 @@ interface PostPropsInterface {
     preview: boolean;
     uri: string;
     data: PostAndMorePostsQuery;
+    token: string;
 }
 
-const Post: React.FC<PostPropsInterface> = ({ data: { post, posts }, preview, uri }) => {
+const Post: React.FC<PostPropsInterface> = ({ data: { post, posts }, preview, uri, token }) => {
     const id = uri;
     const initialData = { post, posts };
 
-    const { data, isLoading, isError } = fetchSWR(id, {
-        variables: { id, idType: 'SLUG', isRevision: false },
-        query: PostAndMorePostsDocument,
-        initialData: initialData,
-        isUseToken: preview,
-    });
+    const { data, isLoading, isError } = fetchSWR(
+        id,
+        {
+            variables: { id, idType: 'SLUG', isRevision: false },
+            query: PostAndMorePostsDocument,
+            initialData: initialData,
+            isUseToken: preview,
+        },
+        token,
+    );
 
     const morePosts = posts?.edges.filter((post) => post.node.slug !== uri);
 
@@ -157,6 +162,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
             preview,
             uri: params.slug,
             data: data,
+            token: previewData.token,
         },
     };
 };

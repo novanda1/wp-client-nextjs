@@ -18,7 +18,9 @@ export default async function preview(req, res) {
     const client = new GraphQLClient(API_URL);
     const sdk = getSdk(client);
     const getToken = await fetcher({ query: GetTokenDocument, variables: { username: 'admin', password: 'admin' } });
-    await cookies.set(COOKIES_TOKEN_NAME, getToken.login.authToken);
+    await cookies.set(COOKIES_TOKEN_NAME, getToken.login.authToken, {
+        overwrite: true,
+    });
     client.setHeader('Authorization', `Bearer ${cookies.get(COOKIES_TOKEN_NAME)}`);
     // res.setHeader('Set-Cookie', serialize(COOKIES_TOKEN_NAME, getToken.login.authToken, { path: '/' }));
 
@@ -36,14 +38,26 @@ export default async function preview(req, res) {
     }
 
     // Enable Preview Mode by setting the cookies
-    res.setPreviewData({
-        post: {
-            id: post.databaseId,
-            slug: post.slug,
-            status: post.status,
+    res.setPreviewData(
+        {
+            post: {
+                id: post.databaseId,
+                slug: post.slug,
+                status: post.status,
+            },
+            token: cookies.get(COOKIES_TOKEN_NAME),
         },
-        token: getToken.login?.authToken,
-    });
+        {
+            /**
+             * specify preview mode duration by wp graphql jwt token life
+             * by default is 5 minutes
+             *
+             * https://github.com/wp-graphql/wp-graphql-jwt-authentication#change-auth-token-expiration
+             * https://nextjs.org/docs/advanced-features/preview-mode#specify-the-preview-mode-duration
+             */
+            maxAge: 60 * 5, // 5 minutes
+        },
+    );
 
     // Redirect to the path from the fetched post
     // We don't redirect to `req.query.slug` as that might lead to open redirect vulnerabilities

@@ -5,7 +5,7 @@ import { Container, HeroPost, Intro, Layout, MoreStories } from '../components';
 import { fetchData, fetchSWR } from '../lib/api';
 import { PostFieldsFragment, PostsDocument } from '../lib/generated/graphql';
 
-const Home: React.FC<{ initialData: PostFieldsFragment }> = ({ initialData }) => {
+const Home: React.FC<{ initialData: PostFieldsFragment; preview: boolean }> = ({ initialData, preview }) => {
     const { data, isError, isLoading } = fetchSWR(PostsDocument, {
         query: PostsDocument,
         initialData,
@@ -17,7 +17,7 @@ const Home: React.FC<{ initialData: PostFieldsFragment }> = ({ initialData }) =>
 
     if (isLoading)
         return (
-            <Layout>
+            <Layout preview={preview}>
                 <Container>
                     <Intro />
                     Loading...
@@ -26,7 +26,7 @@ const Home: React.FC<{ initialData: PostFieldsFragment }> = ({ initialData }) =>
         );
     if (isError)
         return (
-            <Layout>
+            <Layout preview={preview}>
                 <Container>
                     <Intro />
                     <h2 tw="text-sm mt-10">Something went wrong ...</h2>
@@ -36,7 +36,7 @@ const Home: React.FC<{ initialData: PostFieldsFragment }> = ({ initialData }) =>
 
     if (!isError && !isLoading && !posts)
         return (
-            <Layout>
+            <Layout preview={preview}>
                 <Container>
                     <Intro />
                     <h2 tw="text-sm mt-10">I was broke a server of this site, sorry :&apos;)</h2>
@@ -47,7 +47,7 @@ const Home: React.FC<{ initialData: PostFieldsFragment }> = ({ initialData }) =>
     return (
         <>
             <NextSeo />
-            <Layout>
+            <Layout preview={preview}>
                 <Container>
                     <Intro />
                     {heroPost && (
@@ -69,12 +69,13 @@ const Home: React.FC<{ initialData: PostFieldsFragment }> = ({ initialData }) =>
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const initialData = await fetchData({ query: PostsDocument });
 
     return {
         props: {
             initialData,
+            preview,
         },
     };
 };

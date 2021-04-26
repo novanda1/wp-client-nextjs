@@ -53,10 +53,11 @@ export const fetchData = async (args: FetcherArgs) => {
     return data;
 };
 
-export const fetchSWR = (key: any, args: FetcherArgs) => {
+export const fetchSWR = (key: any, args: FetcherArgs, token?: string) => {
     if (args.isUseToken) {
-        client.setHeader('Authorization', `Bearer ${retrieveToken()}`);
+        client.setHeader('Authorization', `Bearer ${token}`);
     }
+
     // const options: Configuration = {
     const options: any = {
         revalidateOnMount: true,
