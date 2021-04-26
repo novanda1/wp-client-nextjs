@@ -18,6 +18,7 @@ export default async function preview(req, res) {
     const client = new GraphQLClient(API_URL);
     const sdk = getSdk(client);
     const getToken = await fetcher({ query: GetTokenDocument, variables: { username: 'admin', password: 'admin' } });
+    await cookies.set(COOKIES_TOKEN_NAME);
     await cookies.set(COOKIES_TOKEN_NAME, getToken.login.authToken, {
         overwrite: true,
     });

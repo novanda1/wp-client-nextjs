@@ -1,9 +1,9 @@
 import { GraphQLClient } from 'graphql-request';
 import Cookies from 'js-cookie';
 import Router from 'next/router';
-import useSWR from 'swr';
-import { getSdk, UserExpiredTokenDocument, UserNodeIdTypeEnum } from '../generated/graphql';
+import useSWR, { useSWRInfinite } from 'swr';
 import { API_URL, API_USERNAME, COOKIES_TOKEN_NAME } from '../constants';
+import { getSdk, UserExpiredTokenDocument, UserNodeIdTypeEnum } from '../generated/graphql';
 import { FetcherArgs } from '../types/FetchArgs';
 import { isServer } from './isServer';
 
@@ -53,9 +53,9 @@ export const fetchData = async (args: FetcherArgs) => {
     return data;
 };
 
-export const fetchSWR = (key: any, args: FetcherArgs, token?: string) => {
+export const fetchSWR = (key: any, args: FetcherArgs, _options: { token?: string; infinite?: boolean }) => {
     if (args.isUseToken) {
-        client.setHeader('Authorization', `Bearer ${token}`);
+        client.setHeader('Authorization', `Bearer ${_options.token}`);
     }
 
     // const options: Configuration = {
@@ -76,12 +76,28 @@ export const fetchSWR = (key: any, args: FetcherArgs, token?: string) => {
         variables: args.variables,
     };
 
-    const { data, error } = useSWR([key], () => fetcher(queryAndVariables), options);
+    console.log(`queryAndVariables`, queryAndVariables);
+
+    let res: any;
+
+    if (_options.infinite) {
+        res = useSWRInfinite(key, () => fetcher(queryAndVariables), options);
+    } else {
+        res = useSWR([key], () => fetcher(queryAndVariables), options);
+    }
+
+    console.log(res.data);
 
     return {
-        data: data,
-        isLoading: !error && !data,
-        isError: error,
+        data: _options.infinite ? res.data : res.data,
+        isLoading: !res.error && !res.data,
+        isError: res.error,
+        infiniteValue: _options.infinite
+            ? {
+                  size: res.size,
+                  setSize: res.setSize,
+              }
+            : null,
     };
 };
 

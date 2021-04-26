@@ -35,7 +35,9 @@ const Post: React.FC<PostPropsInterface> = ({ data: { post, posts }, preview, ur
             initialData: initialData,
             isUseToken: preview,
         },
-        token,
+        {
+            token,
+        },
     );
 
     const morePosts = posts?.edges.filter((post) => post.node.slug !== uri);
@@ -170,7 +172,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const { posts } = await fetchData({ query: PostsSlugDocument, variables: { morePostLength: 3 } });
+    const { posts } = await fetchData({ query: PostsSlugDocument, variables: { morePostLength: 50 } });
 
     return {
         paths: [...posts.edges.map(({ node }) => `/post/${node.slug}`)],
