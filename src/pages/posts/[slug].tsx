@@ -170,7 +170,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const { posts } = await fetchData({ query: PostsSlugDocument });
+    const { posts } = await fetchData({ query: PostsSlugDocument, variables: { morePostLength: 3 } });
 
     return {
         paths: [...posts.edges.map(({ node }) => `/posts/${node.slug}`)],

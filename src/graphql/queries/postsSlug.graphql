@@ -1,5 +1,5 @@
-query PostsSlug {
-    posts(first: 10000) {
+query PostsSlug($morePostLength: Int!) {
+    posts(first: $morePostLength) {
         edges {
             node {
                 slug

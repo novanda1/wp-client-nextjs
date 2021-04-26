@@ -1,6 +1,7 @@
-query Posts {
-    posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+query Posts($limit: Int, $cursor: String) {
+    posts(first: $limit, after: $cursor, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
+            cursor
             node {
                 title
                 excerpt
