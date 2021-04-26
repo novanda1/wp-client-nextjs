@@ -1,4 +1,4 @@
-import { global } from '../stitches.config'
+import { global } from '../stitches.config';
 
 const globalStyles = global({
     '*, *::before, *::after': { boxSizing: 'border-box' },
@@ -14,8 +14,7 @@ const globalStyles = global({
     'abbr[title]': { textDecoration: 'underline dotted' },
     'b, strong': { fontWeight: 'bolder' },
     'code, kbd, samp, pre': {
-        fontFamily:
-            "ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace",
+        fontFamily: "ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace",
         fontSize: '1em',
     },
     small: { fontSize: '80%' },
@@ -114,6 +113,6 @@ const globalStyles = global({
         '--tw-ring-shadow': '0 0 #0000',
         '--tw-shadow': '0 0 #0000',
     },
-})
+});
 
-export default globalStyles
+export default globalStyles;

@@ -1,6 +1,6 @@
+import React from 'react';
 import tw from 'twin.macro';
 import { Span } from '..';
-import { css } from '../../stitches.config';
 
 const Categories: React.FC<{ categories: any }> = ({ categories }) => {
     return (

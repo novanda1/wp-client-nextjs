@@ -1,16 +1,18 @@
-import tw from 'twin.macro'
-import { styled } from '../../stitches.config'
+import React from 'react';
+import tw from 'twin.macro';
+import { AuthorFieldsFragment } from '../../lib/generated/graphql';
+import { styled } from '../../stitches.config';
 
-const AvatarContainer = styled('div', tw`flex items-center`)
-const AvatarImage = styled('img', tw`w-12 h-12 rounded-full mr-4`)
-const AvatarName = styled('div', tw`text-xl font-bold`)
+const AvatarContainer = styled('div', tw`flex items-center`);
+const AvatarImage = styled('img', tw`w-12 h-12 rounded-full mr-4`);
+const AvatarName = styled('div', tw`text-xl font-bold`);
 
-export default function Avatar({ author }) {
+const Avatar: React.FC<{ author: AuthorFieldsFragment }> = ({ author }) => {
     const name = author
         ? author.firstName && author.lastName
             ? `${author.firstName} ${author.lastName}`
             : author.name
-        : null
+        : null;
 
     return (
         <>
@@ -21,5 +23,7 @@ export default function Avatar({ author }) {
                 </AvatarContainer>
             )}
         </>
-    )
-}
+    );
+};
+
+export default Avatar;

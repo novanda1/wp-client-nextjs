@@ -1,40 +1,38 @@
-import { GraphQLClient } from 'graphql-request';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
-import { useMemo, useState } from 'react';
+import React from 'react';
 import {
     Container,
-    PostBody,
-    MoreStories,
     Header,
-    PostHeader,
-    SectionSeparator,
     Layout,
+    MoreStories,
+    PostBody,
+    PostHeader,
     PostTitle,
+    SectionSeparator,
     Tags,
 } from '../../components';
-import { fetchData, fetchStatic, fetchSWR, refreshToken, retrieveToken } from '../../lib/api';
-import { API_URL, API_USERNAME } from '../../lib/constants';
-import { PostAndMorePostsDocument, PostsSlugDocument, UserExpiredTokenDocument, UserNodeIdTypeEnum } from '../../lib/generated/graphql';
+import { fetchData, fetchStatic, fetchSWR } from '../../lib/api';
+import { PostAndMorePostsDocument, PostAndMorePostsQuery, PostsSlugDocument } from '../../lib/generated/graphql';
 
-export default function Post(props) {
-    const id = props.uri;
-    const [initialData, setInitialData] = useState(props.data)    
+interface PostPropsInterface {
+    preview: boolean;
+    uri: string;
+    data: PostAndMorePostsQuery;
+}
 
-    const variablesMemo = useMemo(() => {
-        return { id, idType: 'SLUG', isRevision: false };
-    }, []);
-    const { data, isLoading, isError } = fetchSWR({
-        variables: variablesMemo,
+const Post: React.FC<PostPropsInterface> = ({ data: { post, posts }, preview, uri }) => {
+    const id = uri;
+    const initialData = { post, posts };
+
+    const { data, isLoading, isError } = fetchSWR(id, {
+        variables: { id, idType: 'SLUG', isRevision: false },
         query: PostAndMorePostsDocument,
         initialData: initialData,
-        isUseToken: props.preview,
+        isUseToken: preview,
     });
 
-    const post = data?.post;
-    const posts = data?.posts;
-
-    const morePosts = posts?.edges.filter((post) => post.node.slug !== props.uri);
+    const morePosts = posts?.edges.filter((post) => post.node.slug !== uri);
 
     const {
         title,
@@ -48,10 +46,10 @@ export default function Post(props) {
     } = post?.seo || {};
 
     const currentLocation = process.browser ? window.location.origin : null;
-    const opengraphUrl = (process.env.SITE_URL ? process.env.SITE_URL : currentLocation) + '/posts/' + props?.uri?.slug;
+    const opengraphUrl = (process.env.SITE_URL ? process.env.SITE_URL : currentLocation) + '/posts/' + uri;
 
     if (isLoading && !post) return;
-    <Layout preview={props.preview}>
+    <Layout preview={preview}>
         <Container>
             <Header>
                 <PostTitle>Loading...</PostTitle>
@@ -61,77 +59,78 @@ export default function Post(props) {
 
     if (isError)
         return (
-            <Layout preview={props.preview}>
+            <Layout preview={preview}>
                 <Container>
                     <Header>
-                        <PostTitle>Can't find the post...</PostTitle>
+                        <PostTitle>Can&apos;t find the post...</PostTitle>
                     </Header>
                 </Container>
             </Layout>
         );
 
-    if (!isError && !isLoading && !post)
+    if (!isError && !isLoading && !data?.post?.title)
         return (
             <Layout preview={false}>
                 <Container>
                     <Header></Header>
-                    <PostTitle>Can't find the post</PostTitle>
+                    <PostTitle>Can&apos;t find the post</PostTitle>
                 </Container>
             </Layout>
         );
 
-    if (!isError && !isLoading)
-        return (
-            <>
-                <NextSeo
-                    title={title}
-                    description={opengraphDescription || metaDesc}
-                    canonical={opengraphUrl}
-                    noindex={metaRobotsNoindex}
-                    nofollow={metaRobotsNofollow}
-                    openGraph={{
-                        url: opengraphUrl,
-                        title: opengraphTitle,
-                        description: opengraphDescription,
-                        images: [
-                            {
-                                url: opengraphImage?.sourceUrl,
-                                width: 1280,
-                                height: 720,
-                            },
-                        ],
-                        site_name: opengraphSiteName,
-                    }}
-                    twitter={{
-                        handle: '@Codeytek',
-                        site: '@Codeytek',
-                        cardType: 'summary_large_image',
-                    }}
-                />
-                <Layout preview={props.preview}>
-                    <Container>
-                        <Header />
-                        <>
-                            <article>
-                                <PostHeader
-                                    title={post.title}
-                                    coverImage={post.featuredImage?.node}
-                                    date={post.date}
-                                    author={post.author?.node}
-                                    categories={post.categories}
-                                />
-                                <PostBody content={post.content} />
-                                <footer>{post.tags.edges.length > 0 && <Tags tags={post.tags} />}</footer>
-                            </article>
+    return (
+        <>
+            <NextSeo
+                title={title}
+                description={opengraphDescription || metaDesc}
+                canonical={opengraphUrl}
+                noindex={metaRobotsNoindex === 'index' ? true : false}
+                nofollow={metaRobotsNofollow === 'follow' ? true : false}
+                openGraph={{
+                    url: opengraphUrl,
+                    title: opengraphTitle,
+                    description: opengraphDescription,
+                    images: [
+                        {
+                            url: opengraphImage?.sourceUrl,
+                            width: 1280,
+                            height: 720,
+                        },
+                    ],
+                    site_name: opengraphSiteName,
+                }}
+                twitter={{
+                    handle: '@Codeytek',
+                    site: '@Codeytek',
+                    cardType: 'summary_large_image',
+                }}
+            />
+            <Layout preview={preview}>
+                <Container>
+                    <Header />
+                    <>
+                        <article>
+                            <PostHeader
+                                title={data.post.title}
+                                coverImage={data.post.featuredImage?.node}
+                                date={data.post.date}
+                                author={data.post.author?.node}
+                                categories={data.post.categories}
+                            />
+                            <PostBody content={data.post.content} />
+                            <footer>{data.post.tags.edges.length > 0 && <Tags tags={data.post.tags} />}</footer>
+                        </article>
 
-                            <SectionSeparator />
-                            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-                        </>
-                    </Container>
-                </Layout>
-            </>
-        );
-}
+                        <SectionSeparator />
+                        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+                    </>
+                </Container>
+            </Layout>
+        </>
+    );
+};
+
+export default Post;
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false, previewData }) => {
     const postPreview = preview && previewData?.post;
@@ -144,26 +143,14 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
     const id = isDraft ? postPreview.id : params.slug;
     const idType = isDraft ? 'DATABASE_ID' : 'SLUG';
 
-    /**
-     * check token expired
-     * and set preview to false
-     */
-    // const client = new GraphQLClient(API_URL);
-    
-    // need to use token when check expired token
-    // client.setHeader('Authorization', `Bearer ${retrieveToken()}`)
-    // const exp = await client.request(UserExpiredTokenDocument, {id: API_USERNAME, idType: UserNodeIdTypeEnum.Username})
-    // const expDate = exp.user?.jwtAuthExpiration
-
-    // if(Date.now() == expDate * 1000) {
-    //     preview = false
-    // }
-
-    const data = await fetchStatic({
-        query: PostAndMorePostsDocument,
-        variables: { id, idType, isRevision },
-        isUseToken: preview ? true : false,
-    }, preview && previewData?.token)
+    const data = await fetchStatic(
+        {
+            query: PostAndMorePostsDocument,
+            variables: { id, idType, isRevision },
+            isUseToken: preview ? true : false,
+        },
+        preview && previewData?.token,
+    );
 
     return {
         props: {

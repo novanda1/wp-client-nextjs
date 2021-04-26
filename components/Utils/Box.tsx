@@ -1,4 +1,4 @@
-import { CSSPropertiesToTokenScale, InternalCSS, TMedias } from '@stitches/core';
+import React from 'react';
 import { TwStyle } from 'twin.macro';
 import { styled } from '../../stitches.config';
 

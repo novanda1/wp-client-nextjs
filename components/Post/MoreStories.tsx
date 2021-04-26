@@ -1,7 +1,8 @@
-import tw from 'twin.macro'
-import { Box, Heading, PostPreview } from '..'
+import React from 'react';
+import tw from 'twin.macro';
+import { Box, Heading, PostPreview } from '..';
 
-export default function MoreStories({ posts }) {
+const MoreStories: React.FC<{ posts: any }> = ({ posts }) => {
     return (
         <section>
             <Heading element="h2" tws={tw`mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight`}>
@@ -21,5 +22,7 @@ export default function MoreStories({ posts }) {
                 ))}
             </Box>
         </section>
-    )
-}
+    );
+};
+
+export default MoreStories;
