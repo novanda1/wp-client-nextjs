@@ -1,2 +1,2 @@
 # fluffy-spork-fe
-Nextjs Typescript GraphQL
+Tech stack: Typescript, Nextjs, GraphQL, graphql-request, SWR.
