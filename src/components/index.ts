@@ -32,3 +32,5 @@ export { default as Intro } from './Home/Intro';
 export { default as Span } from './Utils/Span';
 export { default as Box } from './Utils/Box';
 export { default as Heading } from './Utils/Heading';
+export { default as Button } from './Utils/Button';
+export { default as Loader } from './Utils/Loader';

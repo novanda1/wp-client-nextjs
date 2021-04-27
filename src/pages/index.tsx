@@ -2,139 +2,17 @@ import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import React, { useEffect, useState } from 'react';
 import tw from 'twin.macro';
-import { Box, Container, HeroPost, Intro, Layout, MoreStories } from '../components';
-import Button from '../components/Utils/Button';
-import Loader from '../components/Utils/Loader';
+import { Box, Button, Container, HeroPost, Intro, Layout, MoreStories } from '../components';
 import { LastPostCursorDocument, PostsDocument } from '../generated/graphql';
 import { fetchData, fetcher, fetchSWRInfinite } from '../utils/fetcher';
 
 let limit = 5;
 
-// const Home: React.FC<{ initialData: PostFieldsFragment; preview: boolean }> = ({ initialData, preview }) => {
-//     const [pageIndex, setPageIndex] = useState(1);
-//     const [nextCursor, setNextCursor] = useState();
-
-//     const getKey = (pageIndex, nextCursor) => {
-//         // reached the end
-//         if (!nextCursor) return { variables: { limit } };
-
-//         // first page, we don't have `previousPageData`
-//         if (pageIndex === 1) return { variables: { limit, cursor: nextCursor } };
-
-//         // add the cursor to the API endpoint
-//         return { variables: { limit, nextCursor } };
-//     };
-
-//     const { data, isError, isLoading, infiniteValue } = fetchSWR(
-//         getKey(pageIndex, nextCursor),
-//         {
-//             query: PostsDocument,
-//             variables: {
-//                 limit,
-//                 cursor: nextCursor ? nextCursor : '',
-//             },
-//             initialData,
-//         },
-//         { infinite: true },
-//     );
-
-//     const posts = data?.posts;
-
-//     console.log(data);
-
-//     const heroPost = posts?.edges[0].node;
-//     const morePosts = posts?.edges?.slice(1);
-
-//     if (isLoading)
-//         return (
-//             <Layout preview={preview}>
-//                 <Container>
-//                     <Intro />
-//                     Loading...
-//                 </Container>
-//             </Layout>
-//         );
-//     if (isError)
-//         return (
-//             <Layout preview={preview}>
-//                 <Container>
-//                     <Intro />
-//                     <h2 tw="text-sm mt-10">Something went wrong ...</h2>
-//                 </Container>
-//             </Layout>
-//         );
-
-//     if (!isError && !isLoading && !posts)
-//         return (
-//             <Layout preview={preview}>
-//                 <Container>
-//                     <Intro />
-//                     <h2 tw="text-sm mt-10">I was broke a server of this site, sorry :&apos;)</h2>
-//                 </Container>
-//             </Layout>
-//         );
-
-//     return (
-//         <>
-//             <NextSeo />
-//             <Layout preview={preview}>
-//                 <Container>
-//                     <Intro />
-//                     {heroPost && (
-//                         <HeroPost
-//                             title={heroPost.title}
-//                             coverImage={heroPost.featuredImage?.node}
-//                             date={heroPost.date}
-//                             author={heroPost.author?.node}
-//                             slug={heroPost.slug}
-//                             excerpt={heroPost.excerpt}
-//                         />
-//                     )}
-//                     {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-
-//                     {data.posts.edges.map((p) => (
-//                         <div key={p.cursor}>
-//                             {p.node.title}
-//                             <br />
-//                         </div>
-//                     ))}
-//                     <button
-//                         onClick={async () => {
-//                             const cursors = posts.edges.map((p) => p.cursor);
-//                             const nextCursor = cursors[cursors.length - 1];
-//                             setNextCursor(nextCursor);
-//                             setPageIndex(pageIndex + 1);
-//                             infiniteValue.setSize(infiniteValue.size + 1);
-
-//                             console.log(data);
-//                         }}
-//                     >
-//                         load more
-//                     </button>
-//                 </Container>
-//             </Layout>
-//         </>
-//     );
-// };
-
-// export default Home;
-
-// export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-//     const initialData = await fetchData({ query: PostsDocument, variables: { limit } });
-
-//     return {
-//         props: {
-//             initialData,
-//             preview,
-//         },
-//     };
-// };
-
 export default function Home({ initialData, preview, lastPostCursor }) {
     const [cursor, setCursor] = useState('first');
     const [allPosts, setAllPosts] = useState([...initialData.posts.edges]);
 
-    const { data, isError, isLoading, size, setSize, isValidating } = fetchSWRInfinite(
+    const { data, isError, isLoading, size, setSize } = fetchSWRInfinite(
         () => {
             return cursor;
         },
@@ -178,17 +56,34 @@ export default function Home({ initialData, preview, lastPostCursor }) {
         setAllPosts(ps);
     };
 
-    if (!isLoading && !isError) {
-        <Loader />;
-    }
+    if (isLoading)
+        return (
+            <Layout preview={preview}>
+                <Container>
+                    <Intro />
+                    Loading...
+                </Container>
+            </Layout>
+        );
+    if (isError)
+        return (
+            <Layout preview={preview}>
+                <Container>
+                    <Intro />
+                    <h2 tw="text-sm mt-10">Something went wrong ...</h2>
+                </Container>
+            </Layout>
+        );
 
-    if (isLoading) {
-        return 'load';
-    }
-
-    if (isError) {
-        return 'error';
-    }
+    if (!isError && !isLoading && !posts)
+        return (
+            <Layout preview={preview}>
+                <Container>
+                    <Intro />
+                    <h2 tw="text-sm mt-10">Maintenance</h2>
+                </Container>
+            </Layout>
+        );
 
     return (
         <>
@@ -212,14 +107,14 @@ export default function Home({ initialData, preview, lastPostCursor }) {
                         {!isLastPosts && (
                             <Button
                                 disabled={isLastPosts}
-                                tws={tw`flex justify-center items-center py-2 px-6 font-medium text-xl bg-accent-2 rounded-sm`}
+                                tws={tw`hover:bg-accent-7 hover:text-white transition flex justify-center items-center py-2 px-6 font-medium text-lg border-accent-7 border-solid border rounded-sm`}
                                 onClick={() => {
                                     if (isLastPosts) return;
                                     setSize(size + 1);
                                     handleLoadMore();
                                 }}
                             >
-                                {isValidating ? <Loader /> : isLastPosts ? 'End of Posts' : 'Load More'}
+                                {isLastPosts ? 'End of Posts' : 'Load More Posts'}
                             </Button>
                         )}
                     </Box>
@@ -232,6 +127,7 @@ export default function Home({ initialData, preview, lastPostCursor }) {
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const initialData = await fetchData({ query: PostsDocument, variables: { limit } });
     const lastPostCursorData = await fetcher({ query: LastPostCursorDocument });
+
     const lastPostCursor = lastPostCursorData.posts.edges[0].cursor;
 
     return {

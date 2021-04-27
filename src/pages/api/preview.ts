@@ -1,12 +1,10 @@
 import { GraphQLClient } from 'graphql-request';
-import { fetcher } from '../../utils/fetcher';
-import { API_URL, COOKIES_TOKEN_NAME, WORDPRESS_PREVIEW_SECRET } from '../../constants';
+import { API_URL, WORDPRESS_PREVIEW_SECRET } from '../../constants';
 import { getSdk, GetTokenDocument, PostIdType } from '../../generated/graphql';
-import Cookies from 'cookies';
+import { fetcher } from '../../utils/fetcher';
 
 export default async function preview(req, res) {
     const { secret, id, slug } = req.query;
-    const cookies = new Cookies(req, res);
 
     // Check the secret and next parameters
     // This secret should only be known by this API route
@@ -14,31 +12,20 @@ export default async function preview(req, res) {
         return res.status(401).json({ message: 'Invalid token' });
     }
 
-    // settoken
     const client = new GraphQLClient(API_URL);
     const sdk = getSdk(client);
     const getToken = await fetcher({ query: GetTokenDocument, variables: { username: 'admin', password: 'admin' } });
-    await cookies.set(COOKIES_TOKEN_NAME);
-    await cookies.set(COOKIES_TOKEN_NAME, getToken.login.authToken, {
-        overwrite: true,
-    });
-    client.setHeader('Authorization', `Bearer ${cookies.get(COOKIES_TOKEN_NAME)}`);
-    // res.setHeader('Set-Cookie', serialize(COOKIES_TOKEN_NAME, getToken.login.authToken, { path: '/' }));
 
-    // Fetch WordPress to check if the provided `id` or `slug` exists
     const variables: { id: string; idType: PostIdType } = {
         id: id || slug,
         idType: id ? PostIdType.DatabaseId : PostIdType.Slug,
     };
     const { post } = await sdk.PreviewPost(variables);
-    // fetchData({ query: PreviewPostDocument, variables, isUseToken: true });
 
-    // If the post doesn't exist prevent preview mode from being enabled
     if (!post) {
         return res.status(401).json({ message: 'Post not found' });
     }
 
-    // Enable Preview Mode by setting the cookies
     res.setPreviewData(
         {
             post: {
@@ -46,7 +33,7 @@ export default async function preview(req, res) {
                 slug: post.slug,
                 status: post.status,
             },
-            token: cookies.get(COOKIES_TOKEN_NAME),
+            token: getToken.login.authToken,
         },
         {
             /**
