@@ -1,7 +1,7 @@
 import { GraphQLClient } from 'graphql-request';
 import Cookies from 'js-cookie';
 import Router from 'next/router';
-import useSWR, { useSWRInfinite } from 'swr';
+import useSWR, { SWRInfiniteConfiguration, useSWRInfinite } from 'swr';
 import { API_URL, API_USERNAME, COOKIES_TOKEN_NAME } from '../constants';
 import { getSdk, UserExpiredTokenDocument, UserNodeIdTypeEnum } from '../generated/graphql';
 import { FetcherArgs } from '../types/FetchArgs';
@@ -53,7 +53,7 @@ export const fetchData = async (args: FetcherArgs) => {
     return data;
 };
 
-export const fetchSWR = (key: any, args: FetcherArgs, _options: { token?: string; infinite?: boolean }) => {
+export const fetchSWR = (key: any, args: FetcherArgs, _options: { token?: string }) => {
     if (args.isUseToken) {
         client.setHeader('Authorization', `Bearer ${_options.token}`);
     }
@@ -76,28 +76,43 @@ export const fetchSWR = (key: any, args: FetcherArgs, _options: { token?: string
         variables: args.variables,
     };
 
-    console.log(`queryAndVariables`, queryAndVariables);
-
-    let res: any;
-
-    if (_options.infinite) {
-        res = useSWRInfinite(key, () => fetcher(queryAndVariables), options);
-    } else {
-        res = useSWR([key], () => fetcher(queryAndVariables), options);
-    }
-
-    console.log(res.data);
+    const { data, error } = useSWR([key], () => fetcher(queryAndVariables), options);
 
     return {
-        data: _options.infinite ? res.data : res.data,
-        isLoading: !res.error && !res.data,
-        isError: res.error,
-        infiniteValue: _options.infinite
-            ? {
-                  size: res.size,
-                  setSize: res.setSize,
-              }
-            : null,
+        data,
+        isLoading: !error && !data,
+        isError: error,
+    };
+};
+
+export const fetchSWRInfinite = (
+    key: any,
+    args: FetcherArgs,
+    { options, swrOptions }: { options?: { token: string }; swrOptions?: SWRInfiniteConfiguration },
+) => {
+    let token: string;
+    if (options?.token) {
+        token = retrieveToken();
+        client.setHeader('Authorization', `Bearer ${token}`);
+    }
+
+    const queryAndVariables = { query: args.query, variables: args.variables };
+
+    const { data, error, size, setSize, isValidating, mutate, revalidate } = useSWRInfinite(
+        key,
+        () => fetcher(queryAndVariables),
+        swrOptions,
+    );
+
+    return {
+        data,
+        isLoading: !error && !data,
+        isError: error,
+        size,
+        setSize,
+        isValidating,
+        mutate,
+        revalidate,
     };
 };
 

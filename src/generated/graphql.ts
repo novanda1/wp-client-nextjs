@@ -53,224 +53,6 @@ export enum AvatarRatingEnum {
   X = 'X'
 }
 
-/** Gutenberg block interface */
-export type Block = {
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-/** Gutenberg post interface */
-export type BlockEditorContentNode = {
-  /** Gutenberg blocks */
-  blocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Gutenberg blocks as json string */
-  blocksJSON?: Maybe<Scalars['String']>;
-  /** Previewed gutenberg blocks */
-  previewBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Previewed Gutenberg blocks as json string */
-  previewBlocksJSON?: Maybe<Scalars['String']>;
-};
-
-/** Connection between the RootQuery type and the BlockEditorContentNode type */
-export type BlockEditorContentNodeConnection = {
-  __typename?: 'BlockEditorContentNodeConnection';
-  /** Edges for the BlockEditorContentNodeConnection connection */
-  edges?: Maybe<Array<Maybe<BlockEditorContentNodeConnectionEdge>>>;
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<Page | Post | ReusableBlock>>>;
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>;
-};
-
-/** An edge in a connection */
-export type BlockEditorContentNodeConnectionEdge = {
-  __typename?: 'BlockEditorContentNodeConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node?: Maybe<Page | Post | ReusableBlock>;
-};
-
-/** Arguments for filtering the BlockEditorContentNodeConnection connection */
-export type BlockEditorContentNodeConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: Maybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: Maybe<Scalars['Boolean']>;
-  /** Specific ID of the object */
-  id?: Maybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: Maybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: Maybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: Maybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: Maybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: Maybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: Maybe<Array<Maybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: Maybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: Maybe<Scalars['String']>;
-};
-
-/** The BlockEditorPreview type */
-export type BlockEditorPreview = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & NodeWithTitle & NodeWithContentEditor & NodeWithAuthor & {
-  __typename?: 'BlockEditorPreview';
-  /**
-   * The id field matches the WP_Post-&gt;ID field.
-   * @deprecated Deprecated in favor of the databaseId field
-   */
-  blockEditorPreviewId: Scalars['Int'];
-  /** Connection between the NodeWithAuthor type and the User type */
-  author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
-  /** The database identifier of the author of the node */
-  authorDatabaseId?: Maybe<Scalars['Int']>;
-  /** The globally unique identifier of the author of the node */
-  authorId?: Maybe<Scalars['ID']>;
-  blocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  blocksJSON?: Maybe<Scalars['String']>;
-  /** The content of the post. */
-  content?: Maybe<Scalars['String']>;
-  /** Connection between the ContentNode type and the ContentType type */
-  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
-  /** The ID of the node in the database. */
-  databaseId: Scalars['Int'];
-  /** Post publishing date. */
-  date?: Maybe<Scalars['String']>;
-  /** The publishing date set in GMT. */
-  dateGmt?: Maybe<Scalars['String']>;
-  /** The desired slug of the post */
-  desiredSlug?: Maybe<Scalars['String']>;
-  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
-  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-  /** The RSS enclosure for the object */
-  enclosure?: Maybe<Scalars['String']>;
-  /** Connection between the ContentNode type and the EnqueuedScript type */
-  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
-  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
-  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
-  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
-  guid?: Maybe<Scalars['String']>;
-  /** The globally unique identifier of the wgg_preview object. */
-  id: Scalars['ID'];
-  /** Whether the object is a node in the preview state */
-  isPreview?: Maybe<Scalars['Boolean']>;
-  /** Whether the object is restricted from the current viewer */
-  isRestricted?: Maybe<Scalars['Boolean']>;
-  /** The user that most recently edited the node */
-  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-  lastUpdateTime?: Maybe<Scalars['String']>;
-  /** The permalink of the post */
-  link?: Maybe<Scalars['String']>;
-  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
-  modified?: Maybe<Scalars['String']>;
-  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
-  modifiedGmt?: Maybe<Scalars['String']>;
-  /** Connection between the BlockEditorPreview type and the BlockEditorPreview type */
-  preview?: Maybe<BlockEditorPreviewToPreviewConnectionEdge>;
-  /** The database id of the preview node */
-  previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
-  /** Whether the object is a node in the preview state */
-  previewRevisionId?: Maybe<Scalars['ID']>;
-  previewed?: Maybe<Page | Post | ReusableBlock>;
-  previewedDatabaseId?: Maybe<Scalars['Int']>;
-  previewedParentDatabaseId?: Maybe<Scalars['Int']>;
-  /** The Yoast SEO data of the BlockEditorPreview */
-  seo?: Maybe<PostTypeSeo>;
-  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
-  slug?: Maybe<Scalars['String']>;
-  /** The current status of the object */
-  status?: Maybe<Scalars['String']>;
-  /** The template assigned to a node of content */
-  template?: Maybe<CoverTemplate | DefaultTemplate | FullWidthTemplate>;
-  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
-  title?: Maybe<Scalars['String']>;
-  /** URI path for the resource */
-  uri: Scalars['String'];
-};
-
-
-/** The BlockEditorPreview type */
-export type BlockEditorPreviewContentArgs = {
-  format?: Maybe<PostObjectFieldFormatEnum>;
-};
-
-
-/** The BlockEditorPreview type */
-export type BlockEditorPreviewEnqueuedScriptsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-/** The BlockEditorPreview type */
-export type BlockEditorPreviewEnqueuedStylesheetsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-/** The BlockEditorPreview type */
-export type BlockEditorPreviewTitleArgs = {
-  format?: Maybe<PostObjectFieldFormatEnum>;
-};
-
-/** The Type of Identifier used to fetch a single resource. Default is ID. */
-export enum BlockEditorPreviewIdType {
-  /** Identify a resource by the Database ID. */
-  DatabaseId = 'DATABASE_ID',
-  /** Identify a resource by the (hashed) Global ID. */
-  Id = 'ID',
-  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
-  Slug = 'SLUG',
-  /** Identify a resource by the URI. */
-  Uri = 'URI'
-}
-
-/** Connection between the BlockEditorPreview type and the BlockEditorPreview type */
-export type BlockEditorPreviewToPreviewConnectionEdge = {
-  __typename?: 'BlockEditorPreviewToPreviewConnectionEdge';
-  /** The nodes of the connection, without the edges */
-  node?: Maybe<BlockEditorPreview>;
-};
-
-export type BlockUnion = YoastSeoBreadcrumbsBlock | YoastHowToBlock | YoastFaqBlock | CoreParagraphBlock | CoreImageBlock | CoreHeadingBlock | CoreGalleryBlock | CoreListBlock | CoreQuoteBlock | CoreShortcodeBlock | CoreArchivesBlock | CoreAudioBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnsBlock | CoreColumnBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreGroupBlock | CoreFreeformBlock | CoreHtmlBlock | CoreMediaTextBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CorePreformattedBlock | CorePullquoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreBlock | CoreSocialLinksBlock | CoreSocialLinkBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock;
-
 /** The category type */
 export type Category = Node & TermNode & DatabaseIdentifier & UniformResourceIdentifiable & HierarchicalTermNode & MenuItemLinkable & {
   __typename?: 'Category';
@@ -486,7 +268,7 @@ export type CategoryToContentNodeConnection = {
   /** Edges for the CategoryToContentNodeConnection connection */
   edges?: Maybe<Array<Maybe<CategoryToContentNodeConnectionEdge>>>;
   /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>>>;
+  nodes?: Maybe<Array<Maybe<MediaItem | Page | Post>>>;
   /** Information about pagination in a connection. */
   pageInfo?: Maybe<WpPageInfo>;
 };
@@ -497,7 +279,7 @@ export type CategoryToContentNodeConnectionEdge = {
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
   /** The item at the end of the edge */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** Arguments for filtering the CategoryToContentNodeConnection connection */
@@ -814,7 +596,7 @@ export type CommentToCommenterConnectionEdge = {
 export type CommentToContentNodeConnectionEdge = {
   __typename?: 'CommentToContentNodeConnectionEdge';
   /** The nodes of the connection, without the edges */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** Connection between the Comment type and the Comment type */
@@ -983,7 +765,7 @@ export type ContentNode = {
   /** The current status of the object */
   status?: Maybe<Scalars['String']>;
   /** The template assigned to a node of content */
-  template?: Maybe<CoverTemplate | DefaultTemplate | FullWidthTemplate>;
+  template?: Maybe<DefaultTemplate>;
   /** URI path for the resource */
   uri: Scalars['String'];
 };
@@ -1179,11 +961,7 @@ export enum ContentTypeEnum {
   /** The Type of Content object */
   Page = 'PAGE',
   /** The Type of Content object */
-  Post = 'POST',
-  /** The Type of Content object */
-  WggPreview = 'WGG_PREVIEW',
-  /** The Type of Content object */
-  WpBlock = 'WP_BLOCK'
+  Post = 'POST'
 }
 
 /** The Type of Identifier used to fetch a single Content Type node. To be used along with the "id" field. Default is "ID". */
@@ -1200,7 +978,7 @@ export type ContentTypeToContentNodeConnection = {
   /** Edges for the ContentTypeToContentNodeConnection connection */
   edges?: Maybe<Array<Maybe<ContentTypeToContentNodeConnectionEdge>>>;
   /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>>>;
+  nodes?: Maybe<Array<Maybe<MediaItem | Page | Post>>>;
   /** Information about pagination in a connection. */
   pageInfo?: Maybe<WpPageInfo>;
 };
@@ -1211,7 +989,7 @@ export type ContentTypeToContentNodeConnectionEdge = {
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
   /** The item at the end of the edge */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** Arguments for filtering the ContentTypeToContentNodeConnection connection */
@@ -1270,2511 +1048,6 @@ export type ContentTypeToTaxonomyConnectionEdge = {
   cursor?: Maybe<Scalars['String']>;
   /** The item at the end of the edge */
   node?: Maybe<Taxonomy>;
-};
-
-/** core/archives block */
-export type CoreArchivesBlock = Block & {
-  __typename?: 'CoreArchivesBlock';
-  attributes?: Maybe<CoreArchivesBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreArchivesBlockAttributes = {
-  __typename?: 'CoreArchivesBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  displayAsDropdown: Scalars['Boolean'];
-  showPostCounts: Scalars['Boolean'];
-};
-
-/** core/audio block */
-export type CoreAudioBlock = Block & {
-  __typename?: 'CoreAudioBlock';
-  attributes?: Maybe<CoreAudioBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreAudioBlockAttributes = {
-  __typename?: 'CoreAudioBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  autoplay?: Maybe<Scalars['Boolean']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Float']>;
-  loop?: Maybe<Scalars['Boolean']>;
-  preload?: Maybe<Scalars['String']>;
-  src?: Maybe<Scalars['String']>;
-};
-
-export type CoreAudioBlockAttributesUnion = CoreAudioBlockAttributes | CoreAudioBlockDeprecatedV1Attributes;
-
-export type CoreAudioBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreAudioBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  autoplay?: Maybe<Scalars['Boolean']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Float']>;
-  loop?: Maybe<Scalars['Boolean']>;
-  preload?: Maybe<Scalars['String']>;
-  src?: Maybe<Scalars['String']>;
-};
-
-/** core/block block */
-export type CoreBlock = Block & {
-  __typename?: 'CoreBlock';
-  attributes?: Maybe<CoreBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  reusableBlock: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreBlockAttributes = {
-  __typename?: 'CoreBlockAttributes';
-  ref?: Maybe<Scalars['Float']>;
-};
-
-/** core/button block */
-export type CoreButtonBlock = Block & {
-  __typename?: 'CoreButtonBlock';
-  attributes?: Maybe<CoreButtonBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreButtonBlockAttributes = {
-  __typename?: 'CoreButtonBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  borderRadius?: Maybe<Scalars['Float']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-export type CoreButtonBlockAttributesUnion = CoreButtonBlockAttributes | CoreButtonBlockDeprecatedV1Attributes | CoreButtonBlockDeprecatedV2Attributes | CoreButtonBlockDeprecatedV3Attributes | CoreButtonBlockDeprecatedV4Attributes | CoreButtonBlockDeprecatedV5Attributes | CoreButtonBlockDeprecatedV6Attributes;
-
-export type CoreButtonBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreButtonBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  borderRadius?: Maybe<Scalars['Float']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-export type CoreButtonBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreButtonBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  borderRadius?: Maybe<Scalars['Float']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-export type CoreButtonBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreButtonBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  borderRadius?: Maybe<Scalars['Float']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-export type CoreButtonBlockDeprecatedV4Attributes = {
-  __typename?: 'CoreButtonBlockDeprecatedV4Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  borderRadius?: Maybe<Scalars['Float']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-export type CoreButtonBlockDeprecatedV5Attributes = {
-  __typename?: 'CoreButtonBlockDeprecatedV5Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  borderRadius?: Maybe<Scalars['Float']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-export type CoreButtonBlockDeprecatedV6Attributes = {
-  __typename?: 'CoreButtonBlockDeprecatedV6Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  borderRadius?: Maybe<Scalars['Float']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-/** core/buttons block */
-export type CoreButtonsBlock = Block & {
-  __typename?: 'CoreButtonsBlock';
-  attributes?: Maybe<CoreButtonsBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreButtonsBlockAttributes = {
-  __typename?: 'CoreButtonsBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  contentJustification?: Maybe<Scalars['String']>;
-  orientation: Scalars['String'];
-};
-
-export type CoreButtonsBlockAttributesUnion = CoreButtonsBlockAttributes | CoreButtonsBlockDeprecatedV1Attributes;
-
-export type CoreButtonsBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreButtonsBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  contentJustification?: Maybe<Scalars['String']>;
-  orientation: Scalars['String'];
-};
-
-/** core/calendar block */
-export type CoreCalendarBlock = Block & {
-  __typename?: 'CoreCalendarBlock';
-  attributes?: Maybe<CoreCalendarBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreCalendarBlockAttributes = {
-  __typename?: 'CoreCalendarBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  month?: Maybe<Scalars['Int']>;
-  year?: Maybe<Scalars['Int']>;
-};
-
-/** core/categories block */
-export type CoreCategoriesBlock = Block & {
-  __typename?: 'CoreCategoriesBlock';
-  attributes?: Maybe<CoreCategoriesBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreCategoriesBlockAttributes = {
-  __typename?: 'CoreCategoriesBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  displayAsDropdown: Scalars['Boolean'];
-  showHierarchy: Scalars['Boolean'];
-  showPostCounts: Scalars['Boolean'];
-};
-
-/** core/code block */
-export type CoreCodeBlock = Block & {
-  __typename?: 'CoreCodeBlock';
-  attributes?: Maybe<CoreCodeBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreCodeBlockAttributes = {
-  __typename?: 'CoreCodeBlockAttributes';
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  fontSize?: Maybe<Scalars['String']>;
-};
-
-/** core/column block */
-export type CoreColumnBlock = Block & {
-  __typename?: 'CoreColumnBlock';
-  attributes?: Maybe<CoreColumnBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreColumnBlockAttributes = {
-  __typename?: 'CoreColumnBlockAttributes';
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  templateLock?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['String']>;
-};
-
-export type CoreColumnBlockAttributesUnion = CoreColumnBlockAttributes | CoreColumnBlockDeprecatedV1Attributes;
-
-export type CoreColumnBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreColumnBlockDeprecatedV1Attributes';
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  templateLock?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['String']>;
-};
-
-/** core/columns block */
-export type CoreColumnsBlock = Block & {
-  __typename?: 'CoreColumnsBlock';
-  attributes?: Maybe<CoreColumnsBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreColumnsBlockAttributes = {
-  __typename?: 'CoreColumnsBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-export type CoreColumnsBlockAttributesUnion = CoreColumnsBlockAttributes | CoreColumnsBlockDeprecatedV1Attributes | CoreColumnsBlockDeprecatedV2Attributes | CoreColumnsBlockDeprecatedV3Attributes;
-
-export type CoreColumnsBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreColumnsBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-export type CoreColumnsBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreColumnsBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-export type CoreColumnsBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreColumnsBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-/** core/cover block */
-export type CoreCoverBlock = Block & {
-  __typename?: 'CoreCoverBlock';
-  attributes?: Maybe<CoreCoverBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreCoverBlockAttributes = {
-  __typename?: 'CoreCoverBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundType: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  contentPosition?: Maybe<Scalars['String']>;
-  customGradient?: Maybe<Scalars['String']>;
-  customOverlayColor?: Maybe<Scalars['String']>;
-  dimRatio: Scalars['Float'];
-  gradient?: Maybe<Scalars['String']>;
-  hasParallax: Scalars['Boolean'];
-  id?: Maybe<Scalars['Float']>;
-  isRepeated: Scalars['Boolean'];
-  minHeight?: Maybe<Scalars['Float']>;
-  minHeightUnit?: Maybe<Scalars['String']>;
-  overlayColor?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreCoverBlockAttributesUnion = CoreCoverBlockAttributes | CoreCoverBlockDeprecatedV1Attributes | CoreCoverBlockDeprecatedV2Attributes | CoreCoverBlockDeprecatedV3Attributes | CoreCoverBlockDeprecatedV4Attributes | CoreCoverBlockDeprecatedV5Attributes | CoreCoverBlockDeprecatedV6Attributes;
-
-export type CoreCoverBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreCoverBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundType: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  contentPosition?: Maybe<Scalars['String']>;
-  customGradient?: Maybe<Scalars['String']>;
-  customOverlayColor?: Maybe<Scalars['String']>;
-  dimRatio: Scalars['Float'];
-  gradient?: Maybe<Scalars['String']>;
-  hasParallax: Scalars['Boolean'];
-  id?: Maybe<Scalars['Float']>;
-  isRepeated: Scalars['Boolean'];
-  minHeight?: Maybe<Scalars['Float']>;
-  minHeightUnit?: Maybe<Scalars['String']>;
-  overlayColor?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreCoverBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreCoverBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundType: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  contentPosition?: Maybe<Scalars['String']>;
-  customGradient?: Maybe<Scalars['String']>;
-  customOverlayColor?: Maybe<Scalars['String']>;
-  dimRatio: Scalars['Float'];
-  gradient?: Maybe<Scalars['String']>;
-  hasParallax: Scalars['Boolean'];
-  id?: Maybe<Scalars['Float']>;
-  isRepeated: Scalars['Boolean'];
-  minHeight?: Maybe<Scalars['Float']>;
-  minHeightUnit?: Maybe<Scalars['String']>;
-  overlayColor?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreCoverBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreCoverBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundType: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  contentPosition?: Maybe<Scalars['String']>;
-  customGradient?: Maybe<Scalars['String']>;
-  customOverlayColor?: Maybe<Scalars['String']>;
-  dimRatio: Scalars['Float'];
-  gradient?: Maybe<Scalars['String']>;
-  hasParallax: Scalars['Boolean'];
-  id?: Maybe<Scalars['Float']>;
-  isRepeated: Scalars['Boolean'];
-  minHeight?: Maybe<Scalars['Float']>;
-  minHeightUnit?: Maybe<Scalars['String']>;
-  overlayColor?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreCoverBlockDeprecatedV4Attributes = {
-  __typename?: 'CoreCoverBlockDeprecatedV4Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundType: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  contentPosition?: Maybe<Scalars['String']>;
-  customGradient?: Maybe<Scalars['String']>;
-  customOverlayColor?: Maybe<Scalars['String']>;
-  dimRatio: Scalars['Float'];
-  gradient?: Maybe<Scalars['String']>;
-  hasParallax: Scalars['Boolean'];
-  id?: Maybe<Scalars['Float']>;
-  isRepeated: Scalars['Boolean'];
-  minHeight?: Maybe<Scalars['Float']>;
-  minHeightUnit?: Maybe<Scalars['String']>;
-  overlayColor?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreCoverBlockDeprecatedV5Attributes = {
-  __typename?: 'CoreCoverBlockDeprecatedV5Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundType: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  contentPosition?: Maybe<Scalars['String']>;
-  customGradient?: Maybe<Scalars['String']>;
-  customOverlayColor?: Maybe<Scalars['String']>;
-  dimRatio: Scalars['Float'];
-  gradient?: Maybe<Scalars['String']>;
-  hasParallax: Scalars['Boolean'];
-  id?: Maybe<Scalars['Float']>;
-  isRepeated: Scalars['Boolean'];
-  minHeight?: Maybe<Scalars['Float']>;
-  minHeightUnit?: Maybe<Scalars['String']>;
-  overlayColor?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreCoverBlockDeprecatedV6Attributes = {
-  __typename?: 'CoreCoverBlockDeprecatedV6Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundType: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  contentPosition?: Maybe<Scalars['String']>;
-  customGradient?: Maybe<Scalars['String']>;
-  customOverlayColor?: Maybe<Scalars['String']>;
-  dimRatio: Scalars['Float'];
-  gradient?: Maybe<Scalars['String']>;
-  hasParallax: Scalars['Boolean'];
-  id?: Maybe<Scalars['Float']>;
-  isRepeated: Scalars['Boolean'];
-  minHeight?: Maybe<Scalars['Float']>;
-  minHeightUnit?: Maybe<Scalars['String']>;
-  overlayColor?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-/** core/embed block */
-export type CoreEmbedBlock = Block & {
-  __typename?: 'CoreEmbedBlock';
-  attributes?: Maybe<CoreEmbedBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreEmbedBlockAttributes = {
-  __typename?: 'CoreEmbedBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  allowResponsive: Scalars['Boolean'];
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  previewable: Scalars['Boolean'];
-  providerNameSlug?: Maybe<Scalars['String']>;
-  responsive: Scalars['Boolean'];
-  type?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreEmbedBlockAttributesUnion = CoreEmbedBlockAttributes | CoreEmbedBlockDeprecatedV1Attributes;
-
-export type CoreEmbedBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreEmbedBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  allowResponsive: Scalars['Boolean'];
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  previewable: Scalars['Boolean'];
-  providerNameSlug?: Maybe<Scalars['String']>;
-  responsive: Scalars['Boolean'];
-  type?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-/** core/file block */
-export type CoreFileBlock = Block & {
-  __typename?: 'CoreFileBlock';
-  attributes?: Maybe<CoreFileBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreFileBlockAttributes = {
-  __typename?: 'CoreFileBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  downloadButtonText?: Maybe<Scalars['String']>;
-  fileName?: Maybe<Scalars['String']>;
-  href?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Float']>;
-  showDownloadButton: Scalars['Boolean'];
-  textLinkHref?: Maybe<Scalars['String']>;
-  textLinkTarget?: Maybe<Scalars['String']>;
-};
-
-/** core/freeform block */
-export type CoreFreeformBlock = Block & {
-  __typename?: 'CoreFreeformBlock';
-  attributes?: Maybe<CoreFreeformBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreFreeformBlockAttributes = {
-  __typename?: 'CoreFreeformBlockAttributes';
-  content?: Maybe<Scalars['String']>;
-};
-
-/** core/gallery block */
-export type CoreGalleryBlock = Block & {
-  __typename?: 'CoreGalleryBlock';
-  attributes?: Maybe<CoreGalleryBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreGalleryBlockAttributes = {
-  __typename?: 'CoreGalleryBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  columns?: Maybe<Scalars['Float']>;
-  ids: Array<Maybe<Scalars['Float']>>;
-  imageCrop: Scalars['Boolean'];
-  images: Array<Maybe<CoreGalleryBlockAttributesImages>>;
-  linkTo?: Maybe<Scalars['String']>;
-  sizeSlug: Scalars['String'];
-};
-
-export type CoreGalleryBlockAttributesImages = {
-  __typename?: 'CoreGalleryBlockAttributesImages';
-  alt: Scalars['String'];
-  caption?: Maybe<Scalars['String']>;
-  fullUrl?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  link?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreGalleryBlockAttributesUnion = CoreGalleryBlockAttributes | CoreGalleryBlockDeprecatedV1Attributes | CoreGalleryBlockDeprecatedV2Attributes | CoreGalleryBlockDeprecatedV3Attributes | CoreGalleryBlockDeprecatedV4Attributes | CoreGalleryBlockDeprecatedV5Attributes;
-
-export type CoreGalleryBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreGalleryBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  columns?: Maybe<Scalars['Float']>;
-  ids: Array<Maybe<Scalars['Float']>>;
-  imageCrop: Scalars['Boolean'];
-  images: Array<Maybe<CoreGalleryBlockDeprecatedV1AttributesImages>>;
-  linkTo?: Maybe<Scalars['String']>;
-  sizeSlug: Scalars['String'];
-};
-
-export type CoreGalleryBlockDeprecatedV1AttributesImages = {
-  __typename?: 'CoreGalleryBlockDeprecatedV1AttributesImages';
-  alt: Scalars['String'];
-  caption?: Maybe<Scalars['String']>;
-  fullUrl?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  link?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreGalleryBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreGalleryBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  columns?: Maybe<Scalars['Float']>;
-  ids: Array<Maybe<Scalars['Float']>>;
-  imageCrop: Scalars['Boolean'];
-  images: Array<Maybe<CoreGalleryBlockDeprecatedV2AttributesImages>>;
-  linkTo?: Maybe<Scalars['String']>;
-  sizeSlug: Scalars['String'];
-};
-
-export type CoreGalleryBlockDeprecatedV2AttributesImages = {
-  __typename?: 'CoreGalleryBlockDeprecatedV2AttributesImages';
-  alt: Scalars['String'];
-  caption?: Maybe<Scalars['String']>;
-  fullUrl?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  link?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreGalleryBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreGalleryBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  columns?: Maybe<Scalars['Float']>;
-  ids: Array<Maybe<Scalars['Float']>>;
-  imageCrop: Scalars['Boolean'];
-  images: Array<Maybe<CoreGalleryBlockDeprecatedV3AttributesImages>>;
-  linkTo?: Maybe<Scalars['String']>;
-  sizeSlug: Scalars['String'];
-};
-
-export type CoreGalleryBlockDeprecatedV3AttributesImages = {
-  __typename?: 'CoreGalleryBlockDeprecatedV3AttributesImages';
-  alt: Scalars['String'];
-  caption?: Maybe<Scalars['String']>;
-  fullUrl?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  link?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreGalleryBlockDeprecatedV4Attributes = {
-  __typename?: 'CoreGalleryBlockDeprecatedV4Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  columns?: Maybe<Scalars['Float']>;
-  ids: Array<Maybe<Scalars['Float']>>;
-  imageCrop: Scalars['Boolean'];
-  images: Array<Maybe<CoreGalleryBlockDeprecatedV4AttributesImages>>;
-  linkTo?: Maybe<Scalars['String']>;
-  sizeSlug: Scalars['String'];
-};
-
-export type CoreGalleryBlockDeprecatedV4AttributesImages = {
-  __typename?: 'CoreGalleryBlockDeprecatedV4AttributesImages';
-  alt: Scalars['String'];
-  caption?: Maybe<Scalars['String']>;
-  fullUrl?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  link?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type CoreGalleryBlockDeprecatedV5Attributes = {
-  __typename?: 'CoreGalleryBlockDeprecatedV5Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  columns?: Maybe<Scalars['Float']>;
-  ids: Array<Maybe<Scalars['Float']>>;
-  imageCrop: Scalars['Boolean'];
-  images: Array<Maybe<CoreGalleryBlockDeprecatedV5AttributesImages>>;
-  linkTo?: Maybe<Scalars['String']>;
-  sizeSlug: Scalars['String'];
-};
-
-export type CoreGalleryBlockDeprecatedV5AttributesImages = {
-  __typename?: 'CoreGalleryBlockDeprecatedV5AttributesImages';
-  alt: Scalars['String'];
-  caption?: Maybe<Scalars['String']>;
-  fullUrl?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  link?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-/** core/group block */
-export type CoreGroupBlock = Block & {
-  __typename?: 'CoreGroupBlock';
-  attributes?: Maybe<CoreGroupBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreGroupBlockAttributes = {
-  __typename?: 'CoreGroupBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  tagName: Scalars['String'];
-  templateLock?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreGroupBlockAttributesUnion = CoreGroupBlockAttributes | CoreGroupBlockDeprecatedV1Attributes | CoreGroupBlockDeprecatedV2Attributes | CoreGroupBlockDeprecatedV3Attributes;
-
-export type CoreGroupBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreGroupBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  tagName: Scalars['String'];
-  templateLock?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreGroupBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreGroupBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  tagName: Scalars['String'];
-  templateLock?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreGroupBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreGroupBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  tagName: Scalars['String'];
-  templateLock?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** core/heading block */
-export type CoreHeadingBlock = Block & {
-  __typename?: 'CoreHeadingBlock';
-  attributes?: Maybe<CoreHeadingBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreHeadingBlockAttributes = {
-  __typename?: 'CoreHeadingBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  fontSize?: Maybe<Scalars['String']>;
-  level: Scalars['Float'];
-  placeholder?: Maybe<Scalars['String']>;
-  textAlign?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreHeadingBlockAttributesUnion = CoreHeadingBlockAttributes | CoreHeadingBlockDeprecatedV1Attributes | CoreHeadingBlockDeprecatedV2Attributes | CoreHeadingBlockDeprecatedV3Attributes | CoreHeadingBlockDeprecatedV4Attributes;
-
-export type CoreHeadingBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreHeadingBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  fontSize?: Maybe<Scalars['String']>;
-  level: Scalars['Float'];
-  placeholder?: Maybe<Scalars['String']>;
-  textAlign?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreHeadingBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreHeadingBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  fontSize?: Maybe<Scalars['String']>;
-  level: Scalars['Float'];
-  placeholder?: Maybe<Scalars['String']>;
-  textAlign?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreHeadingBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreHeadingBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  fontSize?: Maybe<Scalars['String']>;
-  level: Scalars['Float'];
-  placeholder?: Maybe<Scalars['String']>;
-  textAlign?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreHeadingBlockDeprecatedV4Attributes = {
-  __typename?: 'CoreHeadingBlockDeprecatedV4Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  fontSize?: Maybe<Scalars['String']>;
-  level: Scalars['Float'];
-  placeholder?: Maybe<Scalars['String']>;
-  textAlign?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** core/html block */
-export type CoreHtmlBlock = Block & {
-  __typename?: 'CoreHtmlBlock';
-  attributes?: Maybe<CoreHtmlBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreHtmlBlockAttributes = {
-  __typename?: 'CoreHtmlBlockAttributes';
-  content?: Maybe<Scalars['String']>;
-};
-
-/** core/image block */
-export type CoreImageBlock = Block & {
-  __typename?: 'CoreImageBlock';
-  attributes?: Maybe<CoreImageBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreImageBlockAttributes = {
-  __typename?: 'CoreImageBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  alt: Scalars['String'];
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['Float']>;
-  href?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Float']>;
-  linkClass?: Maybe<Scalars['String']>;
-  linkDestination?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  sizeSlug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-export type CoreImageBlockAttributesUnion = CoreImageBlockAttributes | CoreImageBlockDeprecatedV1Attributes | CoreImageBlockDeprecatedV2Attributes | CoreImageBlockDeprecatedV3Attributes;
-
-export type CoreImageBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreImageBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  alt: Scalars['String'];
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['Float']>;
-  href?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Float']>;
-  linkClass?: Maybe<Scalars['String']>;
-  linkDestination?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  sizeSlug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-export type CoreImageBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreImageBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  alt: Scalars['String'];
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['Float']>;
-  href?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Float']>;
-  linkClass?: Maybe<Scalars['String']>;
-  linkDestination?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  sizeSlug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-export type CoreImageBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreImageBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  alt: Scalars['String'];
-  anchor?: Maybe<Scalars['String']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['Float']>;
-  href?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Float']>;
-  linkClass?: Maybe<Scalars['String']>;
-  linkDestination?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  rel?: Maybe<Scalars['String']>;
-  sizeSlug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Float']>;
-};
-
-/** core/latest-comments block */
-export type CoreLatestCommentsBlock = Block & {
-  __typename?: 'CoreLatestCommentsBlock';
-  attributes?: Maybe<CoreLatestCommentsBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreLatestCommentsBlockAttributes = {
-  __typename?: 'CoreLatestCommentsBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  commentsToShow: Scalars['Float'];
-  displayAvatar: Scalars['Boolean'];
-  displayDate: Scalars['Boolean'];
-  displayExcerpt: Scalars['Boolean'];
-};
-
-/** core/latest-posts block */
-export type CoreLatestPostsBlock = Block & {
-  __typename?: 'CoreLatestPostsBlock';
-  attributes?: Maybe<CoreLatestPostsBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreLatestPostsBlockAttributes = {
-  __typename?: 'CoreLatestPostsBlockAttributes';
-  addLinkToFeaturedImage: Scalars['Boolean'];
-  align?: Maybe<Scalars['String']>;
-  categories?: Maybe<Array<Maybe<Scalars['String']>>>;
-  className?: Maybe<Scalars['String']>;
-  columns: Scalars['Float'];
-  displayAuthor: Scalars['Boolean'];
-  displayFeaturedImage: Scalars['Boolean'];
-  displayPostContent: Scalars['Boolean'];
-  displayPostContentRadio: Scalars['String'];
-  displayPostDate: Scalars['Boolean'];
-  excerptLength: Scalars['Float'];
-  featuredImageAlign?: Maybe<Scalars['String']>;
-  featuredImageSizeHeight?: Maybe<Scalars['Float']>;
-  featuredImageSizeSlug: Scalars['String'];
-  featuredImageSizeWidth?: Maybe<Scalars['Float']>;
-  order: Scalars['String'];
-  orderBy: Scalars['String'];
-  postLayout: Scalars['String'];
-  postsToShow: Scalars['Float'];
-  selectedAuthor?: Maybe<Scalars['Float']>;
-};
-
-export type CoreLatestPostsBlockAttributesUnion = CoreLatestPostsBlockAttributes | CoreLatestPostsBlockDeprecatedV1Attributes;
-
-export type CoreLatestPostsBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreLatestPostsBlockDeprecatedV1Attributes';
-  addLinkToFeaturedImage: Scalars['Boolean'];
-  align?: Maybe<Scalars['String']>;
-  categories?: Maybe<Array<Maybe<Scalars['String']>>>;
-  className?: Maybe<Scalars['String']>;
-  columns: Scalars['Float'];
-  displayAuthor: Scalars['Boolean'];
-  displayFeaturedImage: Scalars['Boolean'];
-  displayPostContent: Scalars['Boolean'];
-  displayPostContentRadio: Scalars['String'];
-  displayPostDate: Scalars['Boolean'];
-  excerptLength: Scalars['Float'];
-  featuredImageAlign?: Maybe<Scalars['String']>;
-  featuredImageSizeHeight?: Maybe<Scalars['Float']>;
-  featuredImageSizeSlug: Scalars['String'];
-  featuredImageSizeWidth?: Maybe<Scalars['Float']>;
-  order: Scalars['String'];
-  orderBy: Scalars['String'];
-  postLayout: Scalars['String'];
-  postsToShow: Scalars['Float'];
-  selectedAuthor?: Maybe<Scalars['Float']>;
-};
-
-/** core/list block */
-export type CoreListBlock = Block & {
-  __typename?: 'CoreListBlock';
-  attributes?: Maybe<CoreListBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreListBlockAttributes = {
-  __typename?: 'CoreListBlockAttributes';
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  fontSize?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  ordered: Scalars['Boolean'];
-  reversed?: Maybe<Scalars['Boolean']>;
-  start?: Maybe<Scalars['Float']>;
-  textColor?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
-  values: Scalars['String'];
-};
-
-/** core/media-text block */
-export type CoreMediaTextBlock = Block & {
-  __typename?: 'CoreMediaTextBlock';
-  attributes?: Maybe<CoreMediaTextBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreMediaTextBlockAttributes = {
-  __typename?: 'CoreMediaTextBlockAttributes';
-  align: Scalars['String'];
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  href?: Maybe<Scalars['String']>;
-  imageFill?: Maybe<Scalars['Boolean']>;
-  isStackedOnMobile: Scalars['Boolean'];
-  linkClass?: Maybe<Scalars['String']>;
-  linkDestination?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  mediaAlt: Scalars['String'];
-  mediaId?: Maybe<Scalars['Float']>;
-  mediaLink?: Maybe<Scalars['String']>;
-  mediaPosition: Scalars['String'];
-  mediaSizeSlug?: Maybe<Scalars['String']>;
-  mediaType?: Maybe<Scalars['String']>;
-  mediaUrl?: Maybe<Scalars['String']>;
-  mediaWidth: Scalars['Float'];
-  rel?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-export type CoreMediaTextBlockAttributesUnion = CoreMediaTextBlockAttributes | CoreMediaTextBlockDeprecatedV1Attributes | CoreMediaTextBlockDeprecatedV2Attributes | CoreMediaTextBlockDeprecatedV3Attributes;
-
-export type CoreMediaTextBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreMediaTextBlockDeprecatedV1Attributes';
-  align: Scalars['String'];
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  href?: Maybe<Scalars['String']>;
-  imageFill?: Maybe<Scalars['Boolean']>;
-  isStackedOnMobile: Scalars['Boolean'];
-  linkClass?: Maybe<Scalars['String']>;
-  linkDestination?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  mediaAlt: Scalars['String'];
-  mediaId?: Maybe<Scalars['Float']>;
-  mediaLink?: Maybe<Scalars['String']>;
-  mediaPosition: Scalars['String'];
-  mediaSizeSlug?: Maybe<Scalars['String']>;
-  mediaType?: Maybe<Scalars['String']>;
-  mediaUrl?: Maybe<Scalars['String']>;
-  mediaWidth: Scalars['Float'];
-  rel?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-export type CoreMediaTextBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreMediaTextBlockDeprecatedV2Attributes';
-  align: Scalars['String'];
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  href?: Maybe<Scalars['String']>;
-  imageFill?: Maybe<Scalars['Boolean']>;
-  isStackedOnMobile: Scalars['Boolean'];
-  linkClass?: Maybe<Scalars['String']>;
-  linkDestination?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  mediaAlt: Scalars['String'];
-  mediaId?: Maybe<Scalars['Float']>;
-  mediaLink?: Maybe<Scalars['String']>;
-  mediaPosition: Scalars['String'];
-  mediaSizeSlug?: Maybe<Scalars['String']>;
-  mediaType?: Maybe<Scalars['String']>;
-  mediaUrl?: Maybe<Scalars['String']>;
-  mediaWidth: Scalars['Float'];
-  rel?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-export type CoreMediaTextBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreMediaTextBlockDeprecatedV3Attributes';
-  align: Scalars['String'];
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  gradient?: Maybe<Scalars['String']>;
-  href?: Maybe<Scalars['String']>;
-  imageFill?: Maybe<Scalars['Boolean']>;
-  isStackedOnMobile: Scalars['Boolean'];
-  linkClass?: Maybe<Scalars['String']>;
-  linkDestination?: Maybe<Scalars['String']>;
-  linkTarget?: Maybe<Scalars['String']>;
-  mediaAlt: Scalars['String'];
-  mediaId?: Maybe<Scalars['Float']>;
-  mediaLink?: Maybe<Scalars['String']>;
-  mediaPosition: Scalars['String'];
-  mediaSizeSlug?: Maybe<Scalars['String']>;
-  mediaType?: Maybe<Scalars['String']>;
-  mediaUrl?: Maybe<Scalars['String']>;
-  mediaWidth: Scalars['Float'];
-  rel?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-/** core/missing block */
-export type CoreMissingBlock = Block & {
-  __typename?: 'CoreMissingBlock';
-  attributes?: Maybe<CoreMissingBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreMissingBlockAttributes = {
-  __typename?: 'CoreMissingBlockAttributes';
-  originalContent?: Maybe<Scalars['String']>;
-  originalName?: Maybe<Scalars['String']>;
-  originalUndelimitedContent?: Maybe<Scalars['String']>;
-};
-
-/** core/more block */
-export type CoreMoreBlock = Block & {
-  __typename?: 'CoreMoreBlock';
-  attributes?: Maybe<CoreMoreBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreMoreBlockAttributes = {
-  __typename?: 'CoreMoreBlockAttributes';
-  customText?: Maybe<Scalars['String']>;
-  noTeaser: Scalars['Boolean'];
-};
-
-/** core/nextpage block */
-export type CoreNextpageBlock = Block & {
-  __typename?: 'CoreNextpageBlock';
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-/** core/paragraph block */
-export type CoreParagraphBlock = Block & {
-  __typename?: 'CoreParagraphBlock';
-  attributes?: Maybe<CoreParagraphBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreParagraphBlockAttributes = {
-  __typename?: 'CoreParagraphBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  direction?: Maybe<Scalars['String']>;
-  dropCap: Scalars['Boolean'];
-  fontSize?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreParagraphBlockAttributesUnion = CoreParagraphBlockAttributes | CoreParagraphBlockDeprecatedV1Attributes | CoreParagraphBlockDeprecatedV2Attributes | CoreParagraphBlockDeprecatedV3Attributes | CoreParagraphBlockDeprecatedV4Attributes | CoreParagraphBlockDeprecatedV5Attributes;
-
-export type CoreParagraphBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreParagraphBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  direction?: Maybe<Scalars['String']>;
-  dropCap: Scalars['Boolean'];
-  fontSize?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreParagraphBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreParagraphBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  direction?: Maybe<Scalars['String']>;
-  dropCap: Scalars['Boolean'];
-  fontSize?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreParagraphBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreParagraphBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  direction?: Maybe<Scalars['String']>;
-  dropCap: Scalars['Boolean'];
-  fontSize?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreParagraphBlockDeprecatedV4Attributes = {
-  __typename?: 'CoreParagraphBlockDeprecatedV4Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  direction?: Maybe<Scalars['String']>;
-  dropCap: Scalars['Boolean'];
-  fontSize?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-export type CoreParagraphBlockDeprecatedV5Attributes = {
-  __typename?: 'CoreParagraphBlockDeprecatedV5Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  direction?: Maybe<Scalars['String']>;
-  dropCap: Scalars['Boolean'];
-  fontSize?: Maybe<Scalars['String']>;
-  placeholder?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** core/preformatted block */
-export type CorePreformattedBlock = Block & {
-  __typename?: 'CorePreformattedBlock';
-  attributes?: Maybe<CorePreformattedBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CorePreformattedBlockAttributes = {
-  __typename?: 'CorePreformattedBlockAttributes';
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  fontSize?: Maybe<Scalars['String']>;
-};
-
-/** core/pullquote block */
-export type CorePullquoteBlock = Block & {
-  __typename?: 'CorePullquoteBlock';
-  attributes?: Maybe<CorePullquoteBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CorePullquoteBlockAttributes = {
-  __typename?: 'CorePullquoteBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  citation: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  customMainColor?: Maybe<Scalars['String']>;
-  customTextColor?: Maybe<Scalars['String']>;
-  mainColor?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type CorePullquoteBlockAttributesUnion = CorePullquoteBlockAttributes | CorePullquoteBlockDeprecatedV1Attributes | CorePullquoteBlockDeprecatedV2Attributes | CorePullquoteBlockDeprecatedV3Attributes | CorePullquoteBlockDeprecatedV4Attributes;
-
-export type CorePullquoteBlockDeprecatedV1Attributes = {
-  __typename?: 'CorePullquoteBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  citation: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  customMainColor?: Maybe<Scalars['String']>;
-  customTextColor?: Maybe<Scalars['String']>;
-  mainColor?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type CorePullquoteBlockDeprecatedV2Attributes = {
-  __typename?: 'CorePullquoteBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  citation: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  customMainColor?: Maybe<Scalars['String']>;
-  customTextColor?: Maybe<Scalars['String']>;
-  mainColor?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type CorePullquoteBlockDeprecatedV3Attributes = {
-  __typename?: 'CorePullquoteBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  citation: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  customMainColor?: Maybe<Scalars['String']>;
-  customTextColor?: Maybe<Scalars['String']>;
-  mainColor?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type CorePullquoteBlockDeprecatedV4Attributes = {
-  __typename?: 'CorePullquoteBlockDeprecatedV4Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  citation: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  customMainColor?: Maybe<Scalars['String']>;
-  customTextColor?: Maybe<Scalars['String']>;
-  mainColor?: Maybe<Scalars['String']>;
-  textColor?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-/** core/quote block */
-export type CoreQuoteBlock = Block & {
-  __typename?: 'CoreQuoteBlock';
-  attributes?: Maybe<CoreQuoteBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreQuoteBlockAttributes = {
-  __typename?: 'CoreQuoteBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  citation: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  value: Scalars['String'];
-};
-
-export type CoreQuoteBlockAttributesUnion = CoreQuoteBlockAttributes | CoreQuoteBlockDeprecatedV1Attributes | CoreQuoteBlockDeprecatedV2Attributes | CoreQuoteBlockDeprecatedV3Attributes;
-
-export type CoreQuoteBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreQuoteBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  citation: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  value: Scalars['String'];
-};
-
-export type CoreQuoteBlockDeprecatedV2Attributes = {
-  __typename?: 'CoreQuoteBlockDeprecatedV2Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  citation: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  value: Scalars['String'];
-};
-
-export type CoreQuoteBlockDeprecatedV3Attributes = {
-  __typename?: 'CoreQuoteBlockDeprecatedV3Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  citation: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  value: Scalars['String'];
-};
-
-/** core/rss block */
-export type CoreRssBlock = Block & {
-  __typename?: 'CoreRssBlock';
-  attributes?: Maybe<CoreRssBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreRssBlockAttributes = {
-  __typename?: 'CoreRssBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  blockLayout: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  columns: Scalars['Float'];
-  displayAuthor: Scalars['Boolean'];
-  displayDate: Scalars['Boolean'];
-  displayExcerpt: Scalars['Boolean'];
-  excerptLength: Scalars['Float'];
-  feedURL: Scalars['String'];
-  itemsToShow: Scalars['Float'];
-};
-
-/** core/search block */
-export type CoreSearchBlock = Block & {
-  __typename?: 'CoreSearchBlock';
-  attributes?: Maybe<CoreSearchBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreSearchBlockAttributes = {
-  __typename?: 'CoreSearchBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  buttonPosition: Scalars['String'];
-  buttonText?: Maybe<Scalars['String']>;
-  buttonUseIcon: Scalars['Boolean'];
-  className?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  placeholder: Scalars['String'];
-  showLabel: Scalars['Boolean'];
-  width?: Maybe<Scalars['Float']>;
-  widthUnit?: Maybe<Scalars['String']>;
-};
-
-/** core/separator block */
-export type CoreSeparatorBlock = Block & {
-  __typename?: 'CoreSeparatorBlock';
-  attributes?: Maybe<CoreSeparatorBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreSeparatorBlockAttributes = {
-  __typename?: 'CoreSeparatorBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  color?: Maybe<Scalars['String']>;
-  customColor?: Maybe<Scalars['String']>;
-};
-
-/** core/shortcode block */
-export type CoreShortcodeBlock = Block & {
-  __typename?: 'CoreShortcodeBlock';
-  attributes?: Maybe<CoreShortcodeBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreShortcodeBlockAttributes = {
-  __typename?: 'CoreShortcodeBlockAttributes';
-  text?: Maybe<Scalars['String']>;
-};
-
-/** core/social-link block */
-export type CoreSocialLinkBlock = Block & {
-  __typename?: 'CoreSocialLinkBlock';
-  attributes?: Maybe<CoreSocialLinkBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreSocialLinkBlockAttributes = {
-  __typename?: 'CoreSocialLinkBlockAttributes';
-  className?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  service?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-/** core/social-links block */
-export type CoreSocialLinksBlock = Block & {
-  __typename?: 'CoreSocialLinksBlock';
-  attributes?: Maybe<CoreSocialLinksBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreSocialLinksBlockAttributes = {
-  __typename?: 'CoreSocialLinksBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  customIconBackgroundColor?: Maybe<Scalars['String']>;
-  customIconColor?: Maybe<Scalars['String']>;
-  iconBackgroundColor?: Maybe<Scalars['String']>;
-  iconBackgroundColorValue?: Maybe<Scalars['String']>;
-  iconColor?: Maybe<Scalars['String']>;
-  iconColorValue?: Maybe<Scalars['String']>;
-  openInNewTab: Scalars['Boolean'];
-  size?: Maybe<Scalars['String']>;
-};
-
-export type CoreSocialLinksBlockAttributesUnion = CoreSocialLinksBlockAttributes | CoreSocialLinksBlockDeprecatedV1Attributes;
-
-export type CoreSocialLinksBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreSocialLinksBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  customIconBackgroundColor?: Maybe<Scalars['String']>;
-  customIconColor?: Maybe<Scalars['String']>;
-  iconBackgroundColor?: Maybe<Scalars['String']>;
-  iconBackgroundColorValue?: Maybe<Scalars['String']>;
-  iconColor?: Maybe<Scalars['String']>;
-  iconColorValue?: Maybe<Scalars['String']>;
-  openInNewTab: Scalars['Boolean'];
-  size?: Maybe<Scalars['String']>;
-};
-
-/** core/spacer block */
-export type CoreSpacerBlock = Block & {
-  __typename?: 'CoreSpacerBlock';
-  attributes?: Maybe<CoreSpacerBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreSpacerBlockAttributes = {
-  __typename?: 'CoreSpacerBlockAttributes';
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  height: Scalars['Float'];
-};
-
-/** core/subhead block */
-export type CoreSubheadBlock = Block & {
-  __typename?: 'CoreSubheadBlock';
-  attributes?: Maybe<CoreSubheadBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreSubheadBlockAttributes = {
-  __typename?: 'CoreSubheadBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-};
-
-/** core/table block */
-export type CoreTableBlock = Block & {
-  __typename?: 'CoreTableBlock';
-  attributes?: Maybe<CoreTableBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreTableBlockAttributes = {
-  __typename?: 'CoreTableBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  body: Array<Maybe<CoreTableBlockAttributesBody>>;
-  caption: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  foot: Array<Maybe<CoreTableBlockAttributesFoot>>;
-  hasFixedLayout: Scalars['Boolean'];
-  head: Array<Maybe<CoreTableBlockAttributesHead>>;
-};
-
-export type CoreTableBlockAttributesBody = {
-  __typename?: 'CoreTableBlockAttributesBody';
-  cells: Array<Maybe<CoreTableBlockAttributesBodyCells>>;
-};
-
-export type CoreTableBlockAttributesBodyCells = {
-  __typename?: 'CoreTableBlockAttributesBodyCells';
-  align?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  scope?: Maybe<Scalars['String']>;
-  tag: Scalars['String'];
-};
-
-export type CoreTableBlockAttributesFoot = {
-  __typename?: 'CoreTableBlockAttributesFoot';
-  cells: Array<Maybe<CoreTableBlockAttributesFootCells>>;
-};
-
-export type CoreTableBlockAttributesFootCells = {
-  __typename?: 'CoreTableBlockAttributesFootCells';
-  align?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  scope?: Maybe<Scalars['String']>;
-  tag: Scalars['String'];
-};
-
-export type CoreTableBlockAttributesHead = {
-  __typename?: 'CoreTableBlockAttributesHead';
-  cells: Array<Maybe<CoreTableBlockAttributesHeadCells>>;
-};
-
-export type CoreTableBlockAttributesHeadCells = {
-  __typename?: 'CoreTableBlockAttributesHeadCells';
-  align?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  scope?: Maybe<Scalars['String']>;
-  tag: Scalars['String'];
-};
-
-export type CoreTableBlockAttributesUnion = CoreTableBlockAttributes | CoreTableBlockDeprecatedV1Attributes;
-
-export type CoreTableBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreTableBlockDeprecatedV1Attributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  body: Array<Maybe<CoreTableBlockDeprecatedV1AttributesBody>>;
-  caption: Scalars['String'];
-  className?: Maybe<Scalars['String']>;
-  foot: Array<Maybe<CoreTableBlockDeprecatedV1AttributesFoot>>;
-  hasFixedLayout: Scalars['Boolean'];
-  head: Array<Maybe<CoreTableBlockDeprecatedV1AttributesHead>>;
-};
-
-export type CoreTableBlockDeprecatedV1AttributesBody = {
-  __typename?: 'CoreTableBlockDeprecatedV1AttributesBody';
-  cells: Array<Maybe<CoreTableBlockDeprecatedV1AttributesBodyCells>>;
-};
-
-export type CoreTableBlockDeprecatedV1AttributesBodyCells = {
-  __typename?: 'CoreTableBlockDeprecatedV1AttributesBodyCells';
-  align?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  scope?: Maybe<Scalars['String']>;
-  tag: Scalars['String'];
-};
-
-export type CoreTableBlockDeprecatedV1AttributesFoot = {
-  __typename?: 'CoreTableBlockDeprecatedV1AttributesFoot';
-  cells: Array<Maybe<CoreTableBlockDeprecatedV1AttributesFootCells>>;
-};
-
-export type CoreTableBlockDeprecatedV1AttributesFootCells = {
-  __typename?: 'CoreTableBlockDeprecatedV1AttributesFootCells';
-  align?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  scope?: Maybe<Scalars['String']>;
-  tag: Scalars['String'];
-};
-
-export type CoreTableBlockDeprecatedV1AttributesHead = {
-  __typename?: 'CoreTableBlockDeprecatedV1AttributesHead';
-  cells: Array<Maybe<CoreTableBlockDeprecatedV1AttributesHeadCells>>;
-};
-
-export type CoreTableBlockDeprecatedV1AttributesHeadCells = {
-  __typename?: 'CoreTableBlockDeprecatedV1AttributesHeadCells';
-  align?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  scope?: Maybe<Scalars['String']>;
-  tag: Scalars['String'];
-};
-
-/** core/tag-cloud block */
-export type CoreTagCloudBlock = Block & {
-  __typename?: 'CoreTagCloudBlock';
-  attributes?: Maybe<CoreTagCloudBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreTagCloudBlockAttributes = {
-  __typename?: 'CoreTagCloudBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  showTagCounts: Scalars['Boolean'];
-  taxonomy: Scalars['String'];
-};
-
-/** core/text-columns block */
-export type CoreTextColumnsBlock = Block & {
-  __typename?: 'CoreTextColumnsBlock';
-  attributes?: Maybe<CoreTextColumnsBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreTextColumnsBlockAttributes = {
-  __typename?: 'CoreTextColumnsBlockAttributes';
-  className?: Maybe<Scalars['String']>;
-  columns: Scalars['Float'];
-  content: Array<Maybe<CoreTextColumnsBlockAttributesContent>>;
-  width?: Maybe<Scalars['String']>;
-};
-
-export type CoreTextColumnsBlockAttributesContent = {
-  __typename?: 'CoreTextColumnsBlockAttributesContent';
-  children?: Maybe<Scalars['String']>;
-};
-
-/** core/verse block */
-export type CoreVerseBlock = Block & {
-  __typename?: 'CoreVerseBlock';
-  attributes?: Maybe<CoreVerseBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreVerseBlockAttributes = {
-  __typename?: 'CoreVerseBlockAttributes';
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  fontSize?: Maybe<Scalars['String']>;
-  textAlign?: Maybe<Scalars['String']>;
-};
-
-export type CoreVerseBlockAttributesUnion = CoreVerseBlockAttributes | CoreVerseBlockDeprecatedV1Attributes;
-
-export type CoreVerseBlockDeprecatedV1Attributes = {
-  __typename?: 'CoreVerseBlockDeprecatedV1Attributes';
-  anchor?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  content: Scalars['String'];
-  fontSize?: Maybe<Scalars['String']>;
-  textAlign?: Maybe<Scalars['String']>;
-};
-
-/** core/video block */
-export type CoreVideoBlock = Block & {
-  __typename?: 'CoreVideoBlock';
-  attributes?: Maybe<CoreVideoBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type CoreVideoBlockAttributes = {
-  __typename?: 'CoreVideoBlockAttributes';
-  align?: Maybe<Scalars['String']>;
-  anchor?: Maybe<Scalars['String']>;
-  autoplay?: Maybe<Scalars['Boolean']>;
-  caption?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  controls: Scalars['Boolean'];
-  id?: Maybe<Scalars['Float']>;
-  loop?: Maybe<Scalars['Boolean']>;
-  muted?: Maybe<Scalars['Boolean']>;
-  playsInline?: Maybe<Scalars['Boolean']>;
-  poster?: Maybe<Scalars['String']>;
-  preload: Scalars['String'];
-  src?: Maybe<Scalars['String']>;
-  tracks: Array<Maybe<Scalars['String']>>;
-};
-
-/** The template assigned to the node */
-export type CoverTemplate = ContentTemplate & {
-  __typename?: 'CoverTemplate';
-  /** The name of the template */
-  templateName?: Maybe<Scalars['String']>;
-};
-
-/** Input for the createBlockEditorPreview mutation */
-export type CreateBlockEditorPreviewInput = {
-  /** The userId to assign as the author of the object */
-  authorId?: Maybe<Scalars['ID']>;
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The content of the object */
-  content?: Maybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: Maybe<Scalars['String']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: Maybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: Maybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: Maybe<Scalars['String']>;
-  /** The status of the object */
-  status?: Maybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: Maybe<Scalars['String']>;
-};
-
-/** The payload for the createBlockEditorPreview mutation */
-export type CreateBlockEditorPreviewPayload = {
-  __typename?: 'CreateBlockEditorPreviewPayload';
-  /** The Post object mutation type. */
-  blockEditorPreview?: Maybe<BlockEditorPreview>;
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
 };
 
 /** Input for the createCategory mutation */
@@ -3985,35 +1258,6 @@ export type CreatePostPayload = {
   post?: Maybe<Post>;
 };
 
-/** Input for the createReusableBlock mutation */
-export type CreateReusableBlockInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The content of the object */
-  content?: Maybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: Maybe<Scalars['String']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: Maybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: Maybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: Maybe<Scalars['String']>;
-  /** The status of the object */
-  status?: Maybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: Maybe<Scalars['String']>;
-};
-
-/** The payload for the createReusableBlock mutation */
-export type CreateReusableBlockPayload = {
-  __typename?: 'CreateReusableBlockPayload';
-  /** The Post object mutation type. */
-  reusableBlock?: Maybe<ReusableBlock>;
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
 /** Input for the createTag mutation */
 export type CreateTagInput = {
   /** The slug that the post_tag will be an alias of */
@@ -4143,27 +1387,6 @@ export type DefaultTemplate = ContentTemplate & {
   templateName?: Maybe<Scalars['String']>;
 };
 
-/** Input for the deleteBlockEditorPreview mutation */
-export type DeleteBlockEditorPreviewInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** Whether the object should be force deleted instead of being moved to the trash */
-  forceDelete?: Maybe<Scalars['Boolean']>;
-  /** The ID of the BlockEditorPreview to delete */
-  id: Scalars['ID'];
-};
-
-/** The payload for the deleteBlockEditorPreview mutation */
-export type DeleteBlockEditorPreviewPayload = {
-  __typename?: 'DeleteBlockEditorPreviewPayload';
-  /** The object before it was deleted */
-  blockEditorPreview?: Maybe<BlockEditorPreview>;
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']>;
-};
-
 /** Input for the deleteCategory mutation */
 export type DeleteCategoryInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -4286,27 +1509,6 @@ export type DeletePostPayload = {
   post?: Maybe<Post>;
 };
 
-/** Input for the deleteReusableBlock mutation */
-export type DeleteReusableBlockInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** Whether the object should be force deleted instead of being moved to the trash */
-  forceDelete?: Maybe<Scalars['Boolean']>;
-  /** The ID of the ReusableBlock to delete */
-  id: Scalars['ID'];
-};
-
-/** The payload for the deleteReusableBlock mutation */
-export type DeleteReusableBlockPayload = {
-  __typename?: 'DeleteReusableBlockPayload';
-  /** The object before it was deleted */
-  reusableBlock?: Maybe<ReusableBlock>;
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']>;
-};
-
 /** Input for the deleteTag mutation */
 export type DeleteTagInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -4412,13 +1614,6 @@ export type EnqueuedStylesheet = Node & EnqueuedAsset & {
   version?: Maybe<Scalars['String']>;
 };
 
-/** The template assigned to the node */
-export type FullWidthTemplate = ContentTemplate & {
-  __typename?: 'FullWidthTemplate';
-  /** The name of the template */
-  templateName?: Maybe<Scalars['String']>;
-};
-
 /** The general setting type */
 export type GeneralSettings = {
   __typename?: 'GeneralSettings';
@@ -4440,41 +1635,6 @@ export type GeneralSettings = {
   title?: Maybe<Scalars['String']>;
   /** Site URL. */
   url?: Maybe<Scalars['String']>;
-};
-
-/** Header Type */
-export type HcmsFooter = {
-  __typename?: 'HCMSFooter';
-  /** Copyright text */
-  copyrightText?: Maybe<Scalars['String']>;
-  /** sidebarOne */
-  sidebarOne?: Maybe<Scalars['String']>;
-  /** sidebarTwo */
-  sidebarTwo?: Maybe<Scalars['String']>;
-  /** Social links */
-  socialLinks?: Maybe<Array<Maybe<HcmsSocialLinks>>>;
-};
-
-/** Header Type */
-export type HcmsHeader = {
-  __typename?: 'HCMSHeader';
-  /** favicon */
-  favicon?: Maybe<Scalars['String']>;
-  /** Site logo URL */
-  siteLogoUrl?: Maybe<Scalars['String']>;
-  /** Site tagline */
-  siteTagLine?: Maybe<Scalars['String']>;
-  /** Site title */
-  siteTitle?: Maybe<Scalars['String']>;
-};
-
-/** Social Links Type */
-export type HcmsSocialLinks = {
-  __typename?: 'HCMSSocialLinks';
-  /** Icon name */
-  iconName?: Maybe<Scalars['String']>;
-  /** Icon url */
-  iconUrl?: Maybe<Scalars['String']>;
 };
 
 /** Content node with hierarchical (parent/child) relationships */
@@ -4517,7 +1677,7 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnection = {
   /** Edges for the HierarchicalContentNodeToContentNodeAncestorsConnection connection */
   edges?: Maybe<Array<Maybe<HierarchicalContentNodeToContentNodeAncestorsConnectionEdge>>>;
   /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>>>;
+  nodes?: Maybe<Array<Maybe<MediaItem | Page | Post>>>;
   /** Information about pagination in a connection. */
   pageInfo?: Maybe<WpPageInfo>;
 };
@@ -4528,7 +1688,7 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionEdge = {
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
   /** The item at the end of the edge */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** Arguments for filtering the HierarchicalContentNodeToContentNodeAncestorsConnection connection */
@@ -4575,7 +1735,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnection = {
   /** Edges for the HierarchicalContentNodeToContentNodeChildrenConnection connection */
   edges?: Maybe<Array<Maybe<HierarchicalContentNodeToContentNodeChildrenConnectionEdge>>>;
   /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>>>;
+  nodes?: Maybe<Array<Maybe<MediaItem | Page | Post>>>;
   /** Information about pagination in a connection. */
   pageInfo?: Maybe<WpPageInfo>;
 };
@@ -4586,7 +1746,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionEdge = {
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
   /** The item at the end of the edge */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** Arguments for filtering the HierarchicalContentNodeToContentNodeChildrenConnection connection */
@@ -4631,7 +1791,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
 export type HierarchicalContentNodeToParentContentNodeConnectionEdge = {
   __typename?: 'HierarchicalContentNodeToParentContentNodeConnectionEdge';
   /** The nodes of the connection, without the edges */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** Term node with hierarchical (parent/child) relationships */
@@ -4777,7 +1937,7 @@ export type MediaItem = Node & ContentNode & DatabaseIdentifier & NodeWithTempla
   /** The current status of the object */
   status?: Maybe<Scalars['String']>;
   /** The template assigned to a node of content */
-  template?: Maybe<CoverTemplate | DefaultTemplate | FullWidthTemplate>;
+  template?: Maybe<DefaultTemplate>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']>;
   /** URI path for the resource */
@@ -4929,8 +2089,6 @@ export enum MediaItemSizeEnum {
   PostThumbnail = 'POST_THUMBNAIL',
   /** MediaItem with the thumbnail size */
   Thumbnail = 'THUMBNAIL',
-  /** MediaItem with the twentytwenty-fullscreen size */
-  TwentytwentyFullscreen = 'TWENTYTWENTY_FULLSCREEN',
   /** MediaItem with the 1536x1536 size */
   '1536X1536' = '_1536X1536',
   /** MediaItem with the 2048x2048 size */
@@ -5166,7 +2324,7 @@ export enum MenuItemNodeIdTypeEnum {
 }
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = Post | Page | Category | Tag;
+export type MenuItemObjectUnion = Post | Page | Category | Tag | PostFormat;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = {
@@ -5211,7 +2369,7 @@ export type MenuItemToMenuItemConnectionWhereArgs = {
 export type MenuItemToMenuItemLinkableConnectionEdge = {
   __typename?: 'MenuItemToMenuItemLinkableConnectionEdge';
   /** The nodes of the connection, without the edges */
-  node?: Maybe<Category | Page | Post | Tag>;
+  node?: Maybe<Category | Page | Post | PostFormat | Tag>;
 };
 
 /** Options for filtering the connection */
@@ -5224,20 +2382,10 @@ export type MenuItemsWhereArgs = {
 
 /** Registered menu locations */
 export enum MenuLocationEnum {
-  /** Put the menu in the expanded location */
-  Expanded = 'EXPANDED',
   /** Put the menu in the footer location */
   Footer = 'FOOTER',
-  /** Put the menu in the hcms-menu-footer location */
-  HcmsMenuFooter = 'HCMS_MENU_FOOTER',
-  /** Put the menu in the hcms-menu-header location */
-  HcmsMenuHeader = 'HCMS_MENU_HEADER',
-  /** Put the menu in the mobile location */
-  Mobile = 'MOBILE',
   /** Put the menu in the primary location */
-  Primary = 'PRIMARY',
-  /** Put the menu in the social location */
-  Social = 'SOCIAL'
+  Primary = 'PRIMARY'
 }
 
 /** The Type of Identifier used to fetch a single node. Default is "ID". To be used along with the "id" field. */
@@ -5552,13 +2700,13 @@ export type NodeWithRevisions = {
 export type NodeWithRevisionsToContentNodeConnectionEdge = {
   __typename?: 'NodeWithRevisionsToContentNodeConnectionEdge';
   /** The nodes of the connection, without the edges */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** A node that can have a template associated with it */
 export type NodeWithTemplate = {
   /** The template assigned to the node */
-  template?: Maybe<CoverTemplate | DefaultTemplate | FullWidthTemplate>;
+  template?: Maybe<DefaultTemplate>;
 };
 
 /** A node that NodeWith a title */
@@ -5592,7 +2740,7 @@ export enum OrderEnum {
 }
 
 /** The page type */
-export type Page = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & UniformResourceIdentifiable & NodeWithTitle & NodeWithContentEditor & NodeWithAuthor & NodeWithFeaturedImage & NodeWithComments & NodeWithRevisions & NodeWithPageAttributes & HierarchicalContentNode & MenuItemLinkable & BlockEditorContentNode & {
+export type Page = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & UniformResourceIdentifiable & NodeWithTitle & NodeWithContentEditor & NodeWithAuthor & NodeWithFeaturedImage & NodeWithComments & NodeWithRevisions & NodeWithPageAttributes & HierarchicalContentNode & MenuItemLinkable & {
   __typename?: 'Page';
   /** Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
   ancestors?: Maybe<HierarchicalContentNodeToContentNodeAncestorsConnection>;
@@ -5602,12 +2750,6 @@ export type Page = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & 
   authorDatabaseId?: Maybe<Scalars['Int']>;
   /** The globally unique identifier of the author of the node */
   authorId?: Maybe<Scalars['ID']>;
-  /** Gutenberg blocks */
-  blocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Gutenberg blocks as json string */
-  blocksJSON?: Maybe<Scalars['String']>;
-  /** bodyClasses */
-  bodyClasses?: Maybe<Scalars['String']>;
   /** Connection between the HierarchicalContentNode type and the ContentNode type */
   children?: Maybe<HierarchicalContentNodeToContentNodeChildrenConnection>;
   /** The number of comments. Even though WPGraphQL denotes this field as an integer, in WordPress this field should be saved as a numeric string for compatibility. */
@@ -5681,10 +2823,6 @@ export type Page = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & 
   parentId?: Maybe<Scalars['ID']>;
   /** Connection between the page type and the page type */
   preview?: Maybe<PageToPreviewConnectionEdge>;
-  /** Previewed gutenberg blocks */
-  previewBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Previewed Gutenberg blocks as json string */
-  previewBlocksJSON?: Maybe<Scalars['String']>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
   /** Whether the object is a node in the preview state */
@@ -5700,7 +2838,7 @@ export type Page = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & 
   /** The current status of the object */
   status?: Maybe<Scalars['String']>;
   /** The template assigned to a node of content */
-  template?: Maybe<CoverTemplate | DefaultTemplate | FullWidthTemplate>;
+  template?: Maybe<DefaultTemplate>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']>;
   /** URI path for the resource */
@@ -5966,7 +3104,7 @@ export type Plugin = Node & {
 };
 
 /** The post type */
-export type Post = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & UniformResourceIdentifiable & NodeWithTitle & NodeWithContentEditor & NodeWithAuthor & NodeWithFeaturedImage & NodeWithExcerpt & NodeWithComments & NodeWithTrackbacks & NodeWithRevisions & MenuItemLinkable & BlockEditorContentNode & {
+export type Post = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & UniformResourceIdentifiable & NodeWithTitle & NodeWithContentEditor & NodeWithAuthor & NodeWithFeaturedImage & NodeWithExcerpt & NodeWithComments & NodeWithTrackbacks & NodeWithRevisions & MenuItemLinkable & {
   __typename?: 'Post';
   /** Connection between the NodeWithAuthor type and the User type */
   author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
@@ -5974,16 +3112,8 @@ export type Post = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & 
   authorDatabaseId?: Maybe<Scalars['Int']>;
   /** The globally unique identifier of the author of the node */
   authorId?: Maybe<Scalars['ID']>;
-  /** Gutenberg blocks */
-  blocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Gutenberg blocks as json string */
-  blocksJSON?: Maybe<Scalars['String']>;
-  /** bodyClasses */
-  bodyClasses?: Maybe<Scalars['String']>;
   /** Connection between the post type and the category type */
   categories?: Maybe<PostToCategoryConnection>;
-  /** Co Authors */
-  coAuthors?: Maybe<Scalars['String']>;
   /** The number of comments. Even though WPGraphQL denotes this field as an integer, in WordPress this field should be saved as a numeric string for compatibility. */
   commentCount?: Maybe<Scalars['Int']>;
   /** Whether the comments are open or closed for this particular post. */
@@ -6051,10 +3181,6 @@ export type Post = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & 
   postId: Scalars['Int'];
   /** Connection between the post type and the post type */
   preview?: Maybe<PostToPreviewConnectionEdge>;
-  /** Previewed gutenberg blocks */
-  previewBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Previewed Gutenberg blocks as json string */
-  previewBlocksJSON?: Maybe<Scalars['String']>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
   /** Whether the object is a node in the preview state */
@@ -6072,7 +3198,7 @@ export type Post = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & 
   /** Connection between the post type and the tag type */
   tags?: Maybe<PostToTagConnection>;
   /** The template assigned to a node of content */
-  template?: Maybe<CoverTemplate | DefaultTemplate | FullWidthTemplate>;
+  template?: Maybe<DefaultTemplate>;
   /** Connection between the post type and the TermNode type */
   terms?: Maybe<PostToTermNodeConnection>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
@@ -6200,7 +3326,7 @@ export type PostCategoriesNodeInput = {
 };
 
 /** The postFormat type */
-export type PostFormat = Node & TermNode & DatabaseIdentifier & UniformResourceIdentifiable & {
+export type PostFormat = Node & TermNode & DatabaseIdentifier & UniformResourceIdentifiable & MenuItemLinkable & {
   __typename?: 'PostFormat';
   /** Connection between the postFormat type and the ContentNode type */
   contentNodes?: Maybe<PostFormatToContentNodeConnection>;
@@ -6301,7 +3427,7 @@ export type PostFormatToContentNodeConnection = {
   /** Edges for the PostFormatToContentNodeConnection connection */
   edges?: Maybe<Array<Maybe<PostFormatToContentNodeConnectionEdge>>>;
   /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>>>;
+  nodes?: Maybe<Array<Maybe<MediaItem | Page | Post>>>;
   /** Information about pagination in a connection. */
   pageInfo?: Maybe<WpPageInfo>;
 };
@@ -6312,7 +3438,7 @@ export type PostFormatToContentNodeConnectionEdge = {
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
   /** The item at the end of the edge */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** Arguments for filtering the PostFormatToContentNodeConnection connection */
@@ -6467,7 +3593,7 @@ export enum PostObjectFieldFormatEnum {
 }
 
 /** Union between the post, page and media item types */
-export type PostObjectUnion = Post | Page | MediaItem | ReusableBlock | BlockEditorPreview;
+export type PostObjectUnion = Post | Page | MediaItem;
 
 /** The column to use when filtering by date */
 export enum PostObjectsConnectionDateColumnEnum {
@@ -7094,8 +4220,6 @@ export type PostTypeSeo = {
   opengraphUrl?: Maybe<Scalars['String']>;
   readingTime?: Maybe<Scalars['Float']>;
   schema?: Maybe<SeoPostTypeSchema>;
-  /** Yoast SEO Schema */
-  schemaDetails?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   twitterDescription?: Maybe<Scalars['String']>;
   twitterImage?: Maybe<MediaItem>;
@@ -7225,143 +4349,6 @@ export type RestoreCommentPayload = {
   restoredId?: Maybe<Scalars['ID']>;
 };
 
-/** The ReusableBlock type */
-export type ReusableBlock = Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & NodeWithTitle & NodeWithContentEditor & BlockEditorContentNode & {
-  __typename?: 'ReusableBlock';
-  /**
-   * The id field matches the WP_Post-&gt;ID field.
-   * @deprecated Deprecated in favor of the databaseId field
-   */
-  reusableBlockId: Scalars['Int'];
-  /** Gutenberg blocks */
-  blocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Gutenberg blocks as json string */
-  blocksJSON?: Maybe<Scalars['String']>;
-  /** The content of the post. */
-  content?: Maybe<Scalars['String']>;
-  /** Connection between the ContentNode type and the ContentType type */
-  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
-  /** The ID of the node in the database. */
-  databaseId: Scalars['Int'];
-  /** Post publishing date. */
-  date?: Maybe<Scalars['String']>;
-  /** The publishing date set in GMT. */
-  dateGmt?: Maybe<Scalars['String']>;
-  /** The desired slug of the post */
-  desiredSlug?: Maybe<Scalars['String']>;
-  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
-  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-  /** The RSS enclosure for the object */
-  enclosure?: Maybe<Scalars['String']>;
-  /** Connection between the ContentNode type and the EnqueuedScript type */
-  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
-  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
-  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
-  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
-  guid?: Maybe<Scalars['String']>;
-  /** The globally unique identifier of the wp_block object. */
-  id: Scalars['ID'];
-  /** Whether the object is a node in the preview state */
-  isPreview?: Maybe<Scalars['Boolean']>;
-  /** Whether the object is restricted from the current viewer */
-  isRestricted?: Maybe<Scalars['Boolean']>;
-  /** The user that most recently edited the node */
-  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-  /** The permalink of the post */
-  link?: Maybe<Scalars['String']>;
-  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
-  modified?: Maybe<Scalars['String']>;
-  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
-  modifiedGmt?: Maybe<Scalars['String']>;
-  /** Connection between the ReusableBlock type and the ReusableBlock type */
-  preview?: Maybe<ReusableBlockToPreviewConnectionEdge>;
-  /** Previewed gutenberg blocks */
-  previewBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Previewed gutenberg blocks */
-  previewBlocksFrom?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Previewed gutenberg blocks as json string */
-  previewBlocksFromJSON?: Maybe<Scalars['String']>;
-  /** Previewed Gutenberg blocks as json string */
-  previewBlocksJSON?: Maybe<Scalars['String']>;
-  /** The database id of the preview node */
-  previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
-  /** Whether the object is a node in the preview state */
-  previewRevisionId?: Maybe<Scalars['ID']>;
-  /** The Yoast SEO data of the ReusableBlock */
-  seo?: Maybe<PostTypeSeo>;
-  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
-  slug?: Maybe<Scalars['String']>;
-  /** The current status of the object */
-  status?: Maybe<Scalars['String']>;
-  /** The template assigned to a node of content */
-  template?: Maybe<CoverTemplate | DefaultTemplate | FullWidthTemplate>;
-  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
-  title?: Maybe<Scalars['String']>;
-  /** URI path for the resource */
-  uri: Scalars['String'];
-};
-
-
-/** The ReusableBlock type */
-export type ReusableBlockContentArgs = {
-  format?: Maybe<PostObjectFieldFormatEnum>;
-};
-
-
-/** The ReusableBlock type */
-export type ReusableBlockEnqueuedScriptsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-/** The ReusableBlock type */
-export type ReusableBlockEnqueuedStylesheetsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-/** The ReusableBlock type */
-export type ReusableBlockPreviewBlocksFromArgs = {
-  databaseId: Scalars['Int'];
-};
-
-
-/** The ReusableBlock type */
-export type ReusableBlockPreviewBlocksFromJsonArgs = {
-  databaseId: Scalars['Int'];
-};
-
-
-/** The ReusableBlock type */
-export type ReusableBlockTitleArgs = {
-  format?: Maybe<PostObjectFieldFormatEnum>;
-};
-
-/** The Type of Identifier used to fetch a single resource. Default is ID. */
-export enum ReusableBlockIdType {
-  /** Identify a resource by the Database ID. */
-  DatabaseId = 'DATABASE_ID',
-  /** Identify a resource by the (hashed) Global ID. */
-  Id = 'ID',
-  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
-  Slug = 'SLUG',
-  /** Identify a resource by the URI. */
-  Uri = 'URI'
-}
-
-/** Connection between the ReusableBlock type and the ReusableBlock type */
-export type ReusableBlockToPreviewConnectionEdge = {
-  __typename?: 'ReusableBlockToPreviewConnectionEdge';
-  /** The nodes of the connection, without the edges */
-  node?: Maybe<ReusableBlock>;
-};
-
 /** The root mutation */
 export type RootMutation = {
   __typename?: 'RootMutation';
@@ -7383,8 +4370,6 @@ export type RootMutation = {
   createPost?: Maybe<CreatePostPayload>;
   /** The payload for the createPostFormat mutation */
   createPostFormat?: Maybe<CreatePostFormatPayload>;
-  /** The payload for the createReusableBlock mutation */
-  createReusableBlock?: Maybe<CreateReusableBlockPayload>;
   /** The payload for the createTag mutation */
   createTag?: Maybe<CreateTagPayload>;
   /** The payload for the createUser mutation */
@@ -7401,8 +4386,6 @@ export type RootMutation = {
   deletePost?: Maybe<DeletePostPayload>;
   /** The payload for the deletePostFormat mutation */
   deletePostFormat?: Maybe<DeletePostFormatPayload>;
-  /** The payload for the deleteReusableBlock mutation */
-  deleteReusableBlock?: Maybe<DeleteReusableBlockPayload>;
   /** The payload for the deleteTag mutation */
   deleteTag?: Maybe<DeleteTagPayload>;
   /** The payload for the deleteUser mutation */
@@ -7429,8 +4412,6 @@ export type RootMutation = {
   updatePage?: Maybe<UpdatePagePayload>;
   /** The payload for the updatePost mutation */
   updatePost?: Maybe<UpdatePostPayload>;
-  /** The payload for the updateReusableBlock mutation */
-  updateReusableBlock?: Maybe<UpdateReusableBlockPayload>;
   /** The payload for the updateSettings mutation */
   updateSettings?: Maybe<UpdateSettingsPayload>;
   /** The payload for the updateUser mutation */
@@ -7493,12 +4474,6 @@ export type RootMutationCreatePostFormatArgs = {
 
 
 /** The root mutation */
-export type RootMutationCreateReusableBlockArgs = {
-  input: CreateReusableBlockInput;
-};
-
-
-/** The root mutation */
 export type RootMutationCreateTagArgs = {
   input: CreateTagInput;
 };
@@ -7543,12 +4518,6 @@ export type RootMutationDeletePostArgs = {
 /** The root mutation */
 export type RootMutationDeletePostFormatArgs = {
   input: DeletePostFormatInput;
-};
-
-
-/** The root mutation */
-export type RootMutationDeleteReusableBlockArgs = {
-  input: DeleteReusableBlockInput;
 };
 
 
@@ -7631,12 +4600,6 @@ export type RootMutationUpdatePostArgs = {
 
 
 /** The root mutation */
-export type RootMutationUpdateReusableBlockArgs = {
-  input: UpdateReusableBlockInput;
-};
-
-
-/** The root mutation */
 export type RootMutationUpdateSettingsArgs = {
   input: UpdateSettingsInput;
 };
@@ -7650,26 +4613,8 @@ export type RootMutationUpdateUserArgs = {
 /** The root entry point into the Graph */
 export type RootQuery = {
   __typename?: 'RootQuery';
-  /** An object of the BlockEditorPreview Type.  */
-  blockEditorPreview?: Maybe<BlockEditorPreview>;
-  /**
-   * A BlockEditorPreview object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  blockEditorPreviewBy?: Maybe<BlockEditorPreview>;
-  /** An object of the ReusableBlock Type.  */
-  reusableBlock?: Maybe<ReusableBlock>;
-  /**
-   * A ReusableBlock object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  reusableBlockBy?: Maybe<ReusableBlock>;
   /** Entry point to get all settings for the site */
   allSettings?: Maybe<Settings>;
-  /** Connection between the RootQuery type and the BlockEditorContentNode type */
-  blockEditorContentNodes?: Maybe<BlockEditorContentNodeConnection>;
-  /** Connection between the RootQuery type and the BlockEditorPreview type */
-  blockEditorPreviews?: Maybe<RootQueryToBlockEditorPreviewConnection>;
   /** Connection between the RootQuery type and the category type */
   categories?: Maybe<RootQueryToCategoryConnection>;
   /** A 0bject */
@@ -7679,7 +4624,7 @@ export type RootQuery = {
   /** Connection between the RootQuery type and the Comment type */
   comments?: Maybe<RootQueryToCommentConnection>;
   /** A node used to manage content */
-  contentNode?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  contentNode?: Maybe<MediaItem | Page | Post>;
   /** Connection between the RootQuery type and the ContentNode type */
   contentNodes?: Maybe<RootQueryToContentNodeConnection>;
   /** Fetch a Content Type node by unique Identifier */
@@ -7688,10 +4633,6 @@ export type RootQuery = {
   contentTypes?: Maybe<RootQueryToContentTypeConnection>;
   discussionSettings?: Maybe<DiscussionSettings>;
   generalSettings?: Maybe<GeneralSettings>;
-  /** Get footer */
-  getFooter?: Maybe<HcmsFooter>;
-  /** Get header */
-  getHeader?: Maybe<HcmsHeader>;
   /** An object of the mediaItem Type.  */
   mediaItem?: Maybe<MediaItem>;
   /**
@@ -7710,7 +4651,7 @@ export type RootQuery = {
   /** Connection between the RootQuery type and the Menu type */
   menus?: Maybe<RootQueryToMenuConnection>;
   /** Fetches an object given its ID */
-  node?: Maybe<BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole>;
+  node?: Maybe<Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | Tag | Taxonomy | Theme | User | UserRole>;
   /** Fetches an object given its Unique Resource Identifier */
   nodeByUri?: Maybe<Category | ContentType | MediaItem | Page | Post | PostFormat | Tag | User>;
   /** An object of the page Type.  */
@@ -7744,8 +4685,6 @@ export type RootQuery = {
   registeredScripts?: Maybe<RootQueryToEnqueuedScriptConnection>;
   /** Connection between the RootQuery type and the EnqueuedStylesheet type */
   registeredStylesheets?: Maybe<RootQueryToEnqueuedStylesheetConnection>;
-  /** Connection between the RootQuery type and the ReusableBlock type */
-  reusableBlocks?: Maybe<RootQueryToReusableBlockConnection>;
   /** Connection between the RootQuery type and the ContentRevisionUnion type */
   revisions?: Maybe<RootQueryToContentRevisionUnionConnection>;
   /** Returns seo site data */
@@ -7777,60 +4716,6 @@ export type RootQuery = {
   /** Returns the current user */
   viewer?: Maybe<User>;
   writingSettings?: Maybe<WritingSettings>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryBlockEditorPreviewArgs = {
-  id: Scalars['ID'];
-  idType?: Maybe<BlockEditorPreviewIdType>;
-  asPreview?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryBlockEditorPreviewByArgs = {
-  id?: Maybe<Scalars['ID']>;
-  blockEditorPreviewId?: Maybe<Scalars['Int']>;
-  uri?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryReusableBlockArgs = {
-  id: Scalars['ID'];
-  idType?: Maybe<ReusableBlockIdType>;
-  asPreview?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryReusableBlockByArgs = {
-  id?: Maybe<Scalars['ID']>;
-  reusableBlockId?: Maybe<Scalars['Int']>;
-  uri?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryBlockEditorContentNodesArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  where?: Maybe<BlockEditorContentNodeConnectionWhereArgs>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryBlockEditorPreviewsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  where?: Maybe<RootQueryToBlockEditorPreviewConnectionWhereArgs>;
 };
 
 
@@ -8079,16 +4964,6 @@ export type RootQueryRegisteredStylesheetsArgs = {
 
 
 /** The root entry point into the Graph */
-export type RootQueryReusableBlocksArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  where?: Maybe<RootQueryToReusableBlockConnectionWhereArgs>;
-};
-
-
-/** The root entry point into the Graph */
 export type RootQueryRevisionsArgs = {
   first?: Maybe<Scalars['Int']>;
   last?: Maybe<Scalars['Int']>;
@@ -8193,74 +5068,6 @@ export type RootQueryUsersArgs = {
   after?: Maybe<Scalars['String']>;
   before?: Maybe<Scalars['String']>;
   where?: Maybe<RootQueryToUserConnectionWhereArgs>;
-};
-
-/** Connection between the RootQuery type and the BlockEditorPreview type */
-export type RootQueryToBlockEditorPreviewConnection = {
-  __typename?: 'RootQueryToBlockEditorPreviewConnection';
-  /** Edges for the RootQueryToBlockEditorPreviewConnection connection */
-  edges?: Maybe<Array<Maybe<RootQueryToBlockEditorPreviewConnectionEdge>>>;
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<BlockEditorPreview>>>;
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>;
-};
-
-/** An edge in a connection */
-export type RootQueryToBlockEditorPreviewConnectionEdge = {
-  __typename?: 'RootQueryToBlockEditorPreviewConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node?: Maybe<BlockEditorPreview>;
-};
-
-/** Arguments for filtering the RootQueryToBlockEditorPreviewConnection connection */
-export type RootQueryToBlockEditorPreviewConnectionWhereArgs = {
-  /** The user that's connected as the author of the object. Use the userId for the author object. */
-  author?: Maybe<Scalars['Int']>;
-  /** Find objects connected to author(s) in the array of author's userIds */
-  authorIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Find objects connected to the author by the author's nicename */
-  authorName?: Maybe<Scalars['String']>;
-  /** Find objects NOT connected to author(s) in the array of author's userIds */
-  authorNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Filter the connection based on dates */
-  dateQuery?: Maybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: Maybe<Scalars['Boolean']>;
-  /** Specific ID of the object */
-  id?: Maybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: Maybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: Maybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: Maybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: Maybe<Scalars['String']>;
-  previewedDatabaseId?: Maybe<Scalars['Int']>;
-  previewedParentDatabaseId?: Maybe<Scalars['Int']>;
-  /** Show Posts based on a keyword search */
-  search?: Maybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: Maybe<Array<Maybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: Maybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: Maybe<Scalars['String']>;
 };
 
 /** Connection between the RootQuery type and the category type */
@@ -8415,7 +5222,7 @@ export type RootQueryToContentNodeConnection = {
   /** Edges for the RootQueryToContentNodeConnection connection */
   edges?: Maybe<Array<Maybe<RootQueryToContentNodeConnectionEdge>>>;
   /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>>>;
+  nodes?: Maybe<Array<Maybe<MediaItem | Page | Post>>>;
   /** Information about pagination in a connection. */
   pageInfo?: Maybe<WpPageInfo>;
 };
@@ -8426,7 +5233,7 @@ export type RootQueryToContentNodeConnectionEdge = {
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
   /** The item at the end of the edge */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** Arguments for filtering the RootQueryToContentNodeConnection connection */
@@ -8855,8 +5662,6 @@ export type RootQueryToPostConnectionWhereArgs = {
   nameIn?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** The ID of the post object to filter by */
-  onlySticky?: Maybe<Scalars['Boolean']>;
   /** What paramater to use to order the objects by. */
   orderby?: Maybe<Array<Maybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
@@ -8951,64 +5756,6 @@ export type RootQueryToPostFormatConnectionWhereArgs = {
   termTaxonomId?: Maybe<Array<Maybe<Scalars['ID']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
   updateTermMetaCache?: Maybe<Scalars['Boolean']>;
-};
-
-/** Connection between the RootQuery type and the ReusableBlock type */
-export type RootQueryToReusableBlockConnection = {
-  __typename?: 'RootQueryToReusableBlockConnection';
-  /** Edges for the RootQueryToReusableBlockConnection connection */
-  edges?: Maybe<Array<Maybe<RootQueryToReusableBlockConnectionEdge>>>;
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<ReusableBlock>>>;
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>;
-};
-
-/** An edge in a connection */
-export type RootQueryToReusableBlockConnectionEdge = {
-  __typename?: 'RootQueryToReusableBlockConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node?: Maybe<ReusableBlock>;
-};
-
-/** Arguments for filtering the RootQueryToReusableBlockConnection connection */
-export type RootQueryToReusableBlockConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: Maybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: Maybe<Scalars['Boolean']>;
-  /** Specific ID of the object */
-  id?: Maybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: Maybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: Maybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: Maybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: Maybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: Maybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: Maybe<Array<Maybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: Maybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: Maybe<Scalars['String']>;
 };
 
 /** Connection between the RootQuery type and the tag type */
@@ -9313,11 +6060,9 @@ export type SeoContentTypeArchive = {
 /** The Yoast SEO search appearance content types */
 export type SeoContentTypes = {
   __typename?: 'SEOContentTypes';
-  blockEditorPreview?: Maybe<SeoContentType>;
   mediaItem?: Maybe<SeoContentType>;
   page?: Maybe<SeoContentType>;
   post?: Maybe<SeoContentType>;
-  reusableBlock?: Maybe<SeoContentType>;
 };
 
 /** The Open Graph data */
@@ -9640,7 +6385,7 @@ export type TagToContentNodeConnection = {
   /** Edges for the TagToContentNodeConnection connection */
   edges?: Maybe<Array<Maybe<TagToContentNodeConnectionEdge>>>;
   /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>>>;
+  nodes?: Maybe<Array<Maybe<MediaItem | Page | Post>>>;
   /** Information about pagination in a connection. */
   pageInfo?: Maybe<WpPageInfo>;
 };
@@ -9651,7 +6396,7 @@ export type TagToContentNodeConnectionEdge = {
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
   /** The item at the end of the edge */
-  node?: Maybe<BlockEditorPreview | MediaItem | Page | Post | ReusableBlock>;
+  node?: Maybe<MediaItem | Page | Post>;
 };
 
 /** Arguments for filtering the TagToContentNodeConnection connection */
@@ -10977,39 +7722,6 @@ export type UniformResourceIdentifiable = {
   uri?: Maybe<Scalars['String']>;
 };
 
-/** Input for the updateBlockEditorPreview mutation */
-export type UpdateBlockEditorPreviewInput = {
-  /** The userId to assign as the author of the object */
-  authorId?: Maybe<Scalars['ID']>;
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The content of the object */
-  content?: Maybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: Maybe<Scalars['String']>;
-  /** The ID of the BlockEditorPreview object */
-  id: Scalars['ID'];
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: Maybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: Maybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: Maybe<Scalars['String']>;
-  /** The status of the object */
-  status?: Maybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: Maybe<Scalars['String']>;
-};
-
-/** The payload for the updateBlockEditorPreview mutation */
-export type UpdateBlockEditorPreviewPayload = {
-  __typename?: 'UpdateBlockEditorPreviewPayload';
-  /** The Post object mutation type. */
-  blockEditorPreview?: Maybe<BlockEditorPreview>;
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
 /** Input for the UpdateCategory mutation */
 export type UpdateCategoryInput = {
   /** The slug that the category will be an alias of */
@@ -11230,37 +7942,6 @@ export type UpdatePostPayload = {
   post?: Maybe<Post>;
 };
 
-/** Input for the updateReusableBlock mutation */
-export type UpdateReusableBlockInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The content of the object */
-  content?: Maybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: Maybe<Scalars['String']>;
-  /** The ID of the ReusableBlock object */
-  id: Scalars['ID'];
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: Maybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: Maybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: Maybe<Scalars['String']>;
-  /** The status of the object */
-  status?: Maybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: Maybe<Scalars['String']>;
-};
-
-/** The payload for the updateReusableBlock mutation */
-export type UpdateReusableBlockPayload = {
-  __typename?: 'UpdateReusableBlockPayload';
-  /** The Post object mutation type. */
-  reusableBlock?: Maybe<ReusableBlock>;
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
 /** Input for the updateSettings mutation */
 export type UpdateSettingsInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -11397,8 +8078,6 @@ export type User = Node & UniformResourceIdentifiable & Commenter & DatabaseIden
   __typename?: 'User';
   /** Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument. */
   avatar?: Maybe<Avatar>;
-  /** Connection between the User type and the BlockEditorPreview type */
-  blockEditorPreviews?: Maybe<UserToBlockEditorPreviewConnection>;
   /** User metadata option name. Usually it will be &quot;wp_capabilities&quot;. */
   capKey?: Maybe<Scalars['String']>;
   /** A list of capabilities (permissions) granted to the user */
@@ -11478,16 +8157,6 @@ export type UserAvatarArgs = {
   size?: Maybe<Scalars['Int']>;
   forceDefault?: Maybe<Scalars['Boolean']>;
   rating?: Maybe<AvatarRatingEnum>;
-};
-
-
-/** A User object */
-export type UserBlockEditorPreviewsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  where?: Maybe<UserToBlockEditorPreviewConnectionWhereArgs>;
 };
 
 
@@ -11615,72 +8284,6 @@ export enum UserRoleEnum {
   /** User role with specific capabilities */
   Subscriber = 'SUBSCRIBER'
 }
-
-/** Connection between the User type and the BlockEditorPreview type */
-export type UserToBlockEditorPreviewConnection = {
-  __typename?: 'UserToBlockEditorPreviewConnection';
-  /** Edges for the UserToBlockEditorPreviewConnection connection */
-  edges?: Maybe<Array<Maybe<UserToBlockEditorPreviewConnectionEdge>>>;
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<BlockEditorPreview>>>;
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>;
-};
-
-/** An edge in a connection */
-export type UserToBlockEditorPreviewConnectionEdge = {
-  __typename?: 'UserToBlockEditorPreviewConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node?: Maybe<BlockEditorPreview>;
-};
-
-/** Arguments for filtering the UserToBlockEditorPreviewConnection connection */
-export type UserToBlockEditorPreviewConnectionWhereArgs = {
-  /** The user that's connected as the author of the object. Use the userId for the author object. */
-  author?: Maybe<Scalars['Int']>;
-  /** Find objects connected to author(s) in the array of author's userIds */
-  authorIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Find objects connected to the author by the author's nicename */
-  authorName?: Maybe<Scalars['String']>;
-  /** Find objects NOT connected to author(s) in the array of author's userIds */
-  authorNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Filter the connection based on dates */
-  dateQuery?: Maybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: Maybe<Scalars['Boolean']>;
-  /** Specific ID of the object */
-  id?: Maybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: Maybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: Maybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: Maybe<Array<Maybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: Maybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: Maybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: Maybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: Maybe<Array<Maybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: Maybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: Maybe<Scalars['String']>;
-};
 
 /** Connection between the User type and the Comment type */
 export type UserToCommentConnection = {
@@ -12168,138 +8771,6 @@ export type WritingSettings = {
   useSmilies?: Maybe<Scalars['Boolean']>;
 };
 
-/** yoast/faq-block block */
-export type YoastFaqBlock = Block & {
-  __typename?: 'YoastFaqBlock';
-  attributes?: Maybe<YoastFaqBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type YoastFaqBlockAttributes = {
-  __typename?: 'YoastFaqBlockAttributes';
-  additionalListCssClasses?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-};
-
-export type YoastFaqBlockAttributesUnion = YoastFaqBlockAttributes | YoastFaqBlockDeprecatedV1Attributes;
-
-export type YoastFaqBlockDeprecatedV1Attributes = {
-  __typename?: 'YoastFaqBlockDeprecatedV1Attributes';
-  additionalListCssClasses?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-};
-
-/** yoast/how-to-block block */
-export type YoastHowToBlock = Block & {
-  __typename?: 'YoastHowToBlock';
-  attributes?: Maybe<YoastHowToBlockAttributesUnion>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type YoastHowToBlockAttributes = {
-  __typename?: 'YoastHowToBlockAttributes';
-  additionalListCssClasses?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  days?: Maybe<Scalars['String']>;
-  defaultDurationText?: Maybe<Scalars['String']>;
-  durationText?: Maybe<Scalars['String']>;
-  hasDuration?: Maybe<Scalars['Boolean']>;
-  hours?: Maybe<Scalars['String']>;
-  jsonDescription?: Maybe<Scalars['String']>;
-  minutes?: Maybe<Scalars['String']>;
-  unorderedList?: Maybe<Scalars['Boolean']>;
-};
-
-export type YoastHowToBlockAttributesUnion = YoastHowToBlockAttributes | YoastHowToBlockDeprecatedV1Attributes | YoastHowToBlockDeprecatedV2Attributes;
-
-export type YoastHowToBlockDeprecatedV1Attributes = {
-  __typename?: 'YoastHowToBlockDeprecatedV1Attributes';
-  additionalListCssClasses?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  days?: Maybe<Scalars['String']>;
-  defaultDurationText?: Maybe<Scalars['String']>;
-  durationText?: Maybe<Scalars['String']>;
-  hasDuration?: Maybe<Scalars['Boolean']>;
-  hours?: Maybe<Scalars['String']>;
-  jsonDescription?: Maybe<Scalars['String']>;
-  minutes?: Maybe<Scalars['String']>;
-  unorderedList?: Maybe<Scalars['Boolean']>;
-};
-
-export type YoastHowToBlockDeprecatedV2Attributes = {
-  __typename?: 'YoastHowToBlockDeprecatedV2Attributes';
-  additionalListCssClasses?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  days?: Maybe<Scalars['String']>;
-  defaultDurationText?: Maybe<Scalars['String']>;
-  durationText?: Maybe<Scalars['String']>;
-  hasDuration?: Maybe<Scalars['Boolean']>;
-  hours?: Maybe<Scalars['String']>;
-  jsonDescription?: Maybe<Scalars['String']>;
-  minutes?: Maybe<Scalars['String']>;
-  unorderedList?: Maybe<Scalars['Boolean']>;
-};
-
-/** yoast-seo/breadcrumbs block */
-export type YoastSeoBreadcrumbsBlock = Block & {
-  __typename?: 'YoastSeoBreadcrumbsBlock';
-  attributes?: Maybe<YoastSeoBreadcrumbsBlockAttributes>;
-  /** Server side rendered content. */
-  dynamicContent?: Maybe<Scalars['String']>;
-  /** Gutenberg blocks */
-  innerBlocks?: Maybe<Array<CoreArchivesBlock | CoreAudioBlock | CoreBlock | CoreButtonBlock | CoreButtonsBlock | CoreCalendarBlock | CoreCategoriesBlock | CoreCodeBlock | CoreColumnBlock | CoreColumnsBlock | CoreCoverBlock | CoreEmbedBlock | CoreFileBlock | CoreFreeformBlock | CoreGalleryBlock | CoreGroupBlock | CoreHeadingBlock | CoreHtmlBlock | CoreImageBlock | CoreLatestCommentsBlock | CoreLatestPostsBlock | CoreListBlock | CoreMediaTextBlock | CoreMissingBlock | CoreMoreBlock | CoreNextpageBlock | CoreParagraphBlock | CorePreformattedBlock | CorePullquoteBlock | CoreQuoteBlock | CoreRssBlock | CoreSearchBlock | CoreSeparatorBlock | CoreShortcodeBlock | CoreSocialLinkBlock | CoreSocialLinksBlock | CoreSpacerBlock | CoreSubheadBlock | CoreTableBlock | CoreTagCloudBlock | CoreTextColumnsBlock | CoreVerseBlock | CoreVideoBlock | YoastFaqBlock | YoastHowToBlock | YoastSeoBreadcrumbsBlock>>;
-  /** Is block rendered server side. */
-  isDynamic: Scalars['Boolean'];
-  /** Name of the block. */
-  name: Scalars['String'];
-  order: Scalars['Int'];
-  /** Original HTML content. */
-  originalContent?: Maybe<Scalars['String']>;
-  /** Parent post. */
-  parentNode: BlockEditorPreview | Category | Comment | CommentAuthor | ContentType | EnqueuedScript | EnqueuedStylesheet | MediaItem | Menu | MenuItem | Page | Plugin | Post | PostFormat | ReusableBlock | Tag | Taxonomy | Theme | User | UserRole;
-  /** Parent post id. */
-  parentNodeDatabaseId: Scalars['Int'];
-  /** Original HTML content with inner blocks. */
-  saveContent?: Maybe<Scalars['String']>;
-};
-
-export type YoastSeoBreadcrumbsBlockAttributes = {
-  __typename?: 'YoastSeoBreadcrumbsBlockAttributes';
-  className?: Maybe<Scalars['String']>;
-};
-
 export type AuthorFieldsFragment = (
   { __typename?: 'User' }
   & Pick<User, 'name' | 'firstName' | 'lastName'>
@@ -12347,7 +8818,7 @@ export type PostFieldsFragment = (
 
 export type SeoFragmentFragment = (
   { __typename?: 'PostTypeSEO' }
-  & Pick<PostTypeSeo, 'title' | 'metaDesc' | 'metaRobotsNoindex' | 'metaRobotsNofollow' | 'opengraphAuthor' | 'opengraphDescription' | 'opengraphTitle' | 'schemaDetails' | 'opengraphSiteName' | 'opengraphPublishedTime' | 'opengraphModifiedTime' | 'twitterTitle' | 'twitterDescription'>
+  & Pick<PostTypeSeo, 'title' | 'metaDesc' | 'metaRobotsNoindex' | 'metaRobotsNofollow' | 'opengraphAuthor' | 'opengraphDescription' | 'opengraphTitle' | 'opengraphSiteName' | 'opengraphPublishedTime' | 'opengraphModifiedTime' | 'twitterTitle' | 'twitterDescription'>
   & { breadcrumbs?: Maybe<Array<Maybe<(
     { __typename?: 'SEOPostTypeBreadcrumbs' }
     & Pick<SeoPostTypeBreadcrumbs, 'text' | 'url'>
@@ -12384,6 +8855,20 @@ export type RefreshTokenMutation = (
   & { refreshJwtAuthToken?: Maybe<(
     { __typename?: 'RefreshJwtAuthTokenPayload' }
     & Pick<RefreshJwtAuthTokenPayload, 'authToken'>
+  )> }
+);
+
+export type LastPostCursorQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LastPostCursorQuery = (
+  { __typename?: 'RootQuery' }
+  & { posts?: Maybe<(
+    { __typename?: 'RootQueryToPostConnection' }
+    & { edges?: Maybe<Array<Maybe<(
+      { __typename?: 'RootQueryToPostConnectionEdge' }
+      & Pick<RootQueryToPostConnectionEdge, 'cursor'>
+    )>>> }
   )> }
 );
 
@@ -12572,7 +9057,6 @@ export const SeoFragmentFragmentDoc = gql`
   opengraphAuthor
   opengraphDescription
   opengraphTitle
-  schemaDetails
   opengraphImage {
     sourceUrl
   }
@@ -12597,6 +9081,15 @@ export const RefreshTokenDocument = gql`
     mutation RefreshToken($token: String!) {
   refreshJwtAuthToken(input: {jwtRefreshToken: $token}) {
     authToken
+  }
+}
+    `;
+export const LastPostCursorDocument = gql`
+    query LastPostCursor {
+  posts(last: 1) {
+    edges {
+      cursor
+    }
   }
 }
     `;
@@ -12708,6 +9201,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     RefreshToken(variables: RefreshTokenMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<RefreshTokenMutation> {
       return withWrapper(() => client.request<RefreshTokenMutation>(RefreshTokenDocument, variables, requestHeaders));
+    },
+    LastPostCursor(variables?: LastPostCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LastPostCursorQuery> {
+      return withWrapper(() => client.request<LastPostCursorQuery>(LastPostCursorDocument, variables, requestHeaders));
     },
     PostAndMorePosts(variables: PostAndMorePostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PostAndMorePostsQuery> {
       return withWrapper(() => client.request<PostAndMorePostsQuery>(PostAndMorePostsDocument, variables, requestHeaders));

@@ -1,0 +1,7 @@
+query LastPostCursor {
+    posts(last: 1) {
+        edges {
+            cursor
+        }
+    }
+}
