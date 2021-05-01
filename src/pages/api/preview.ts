@@ -16,6 +16,8 @@ export default async function preview(req, res) {
     const sdk = getSdk(client);
     const getToken = await fetcher({ query: GetTokenDocument, variables: { username: 'admin', password: 'admin' } });
 
+    client.setHeader('Authorization', `Bearer ${getToken.login.authToken}`);
+
     const variables: { id: string; idType: PostIdType } = {
         id: id || slug,
         idType: id ? PostIdType.DatabaseId : PostIdType.Slug,
