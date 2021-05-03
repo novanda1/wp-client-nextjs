@@ -1,8 +1,5 @@
 module.exports = {
-    purge: [
-        './pages/**/*.{js,ts,jsx,tsx}',
-        './components/**/*.{js,ts,jsx,tsx}',
-    ],
+    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
             colors: {
@@ -33,8 +30,5 @@ module.exports = {
             },
         },
     },
-    plugins: [
-        require('@tailwindcss/line-clamp'),
-        require('@tailwindcss/typography'),
-    ],
-}
+    plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/typography')],
+};
