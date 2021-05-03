@@ -69,7 +69,7 @@ export const fetchSWR = (key: any, args: FetcherArgs, _options: { token?: string
 
     if (args.initialData) {
         options.initialData = args.initialData;
-        options.revalidateOnMount = false;
+        // options.revalidateOnMount = false;
     }
 
     const queryAndVariables = {
