@@ -2,12 +2,14 @@ import React from 'react';
 import tw from 'twin.macro';
 import { Box, Heading, PostPreview } from '..';
 
-const MoreStories: React.FC<{ posts: any }> = ({ posts }) => {
+const MoreStories: React.FC<{ posts: any; useHeading?: boolean }> = ({ posts, useHeading = true }) => {
     return (
         <section>
-            <Heading element="h2" tws={tw`mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight`}>
-                More Stories
-            </Heading>
+            {useHeading && (
+                <Heading element="h2" tws={tw`mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight`}>
+                    More Stories
+                </Heading>
+            )}
             <Box tws={tw`grid grid-cols-1 md:grid-cols-2 md:col-gap-16 lg:col-gap-32 row-gap-20 md:row-gap-32 mb-32`}>
                 {posts.map(({ node }) => (
                     <PostPreview

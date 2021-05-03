@@ -24,6 +24,7 @@ export { default as PostPreview } from './Post/PostPreview';
 export { default as PostHeader } from './Post/PostHeader';
 export { default as PostTitle } from './Post/PostTitle';
 export { default as PostBody } from './Post/PostBody';
+export { default as Page } from './Post/Page';
 
 // Home
 export { default as Intro } from './Home/Intro';

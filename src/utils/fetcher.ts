@@ -53,7 +53,7 @@ export const fetchData = async (args: FetcherArgs) => {
     return data;
 };
 
-export const fetchSWR = (key: any, args: FetcherArgs, _options: { token?: string }) => {
+export const fetchSWR = (key: any, args: FetcherArgs, _options?: { token?: string }) => {
     if (args.isUseToken) {
         client.setHeader('Authorization', `Bearer ${_options.token}`);
     }
