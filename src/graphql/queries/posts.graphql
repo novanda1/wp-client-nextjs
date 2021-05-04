@@ -1,5 +1,11 @@
 query Posts($limit: Int, $cursor: String) {
     posts(first: $limit, after: $cursor, where: { orderby: { field: DATE, order: DESC } }) {
+        pageInfo {
+            startCursor
+            hasPreviousPage
+            endCursor
+            hasNextPage
+        }
         edges {
             cursor
             node {

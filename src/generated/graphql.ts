@@ -8928,7 +8928,10 @@ export type PostsQuery = (
   { __typename?: 'RootQuery' }
   & { posts?: Maybe<(
     { __typename?: 'RootQueryToPostConnection' }
-    & { edges?: Maybe<Array<Maybe<(
+    & { pageInfo?: Maybe<(
+      { __typename?: 'WPPageInfo' }
+      & Pick<WpPageInfo, 'startCursor' | 'hasPreviousPage' | 'endCursor' | 'hasNextPage'>
+    )>, edges?: Maybe<Array<Maybe<(
       { __typename?: 'RootQueryToPostConnectionEdge' }
       & Pick<RootQueryToPostConnectionEdge, 'cursor'>
       & { node?: Maybe<(
@@ -9136,6 +9139,12 @@ export const PostsDocument = gql`
     after: $cursor
     where: {orderby: {field: DATE, order: DESC}}
   ) {
+    pageInfo {
+      startCursor
+      hasPreviousPage
+      endCursor
+      hasNextPage
+    }
     edges {
       cursor
       node {

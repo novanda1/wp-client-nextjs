@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://09b74d736e48.ngrok.io/graphql'
+schema: 'http://localhost/graphql'
 documents: 'src/graphql/**/*.graphql'
 generates:
     src/generated/graphql.ts:

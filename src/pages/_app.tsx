@@ -2,6 +2,7 @@ import globalStyles from '../../styles/globalStyles';
 import { DefaultSeo } from 'next-seo';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '../constants';
 import React from 'react';
+import { CookiesProvider } from 'react-cookie';
 
 const App: React.FC<{ Component: any; pageProps: any }> = ({ Component, pageProps }) => {
     globalStyles();
@@ -21,7 +22,9 @@ const App: React.FC<{ Component: any; pageProps: any }> = ({ Component, pageProp
                     cardType: 'summary_large_image',
                 }}
             />
-            <Component {...pageProps} />
+            <CookiesProvider>
+                <Component {...pageProps} />
+            </CookiesProvider>
         </>
     );
 };

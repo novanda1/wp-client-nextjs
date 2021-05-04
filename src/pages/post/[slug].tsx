@@ -41,6 +41,7 @@ const Post: React.FC<PostPropsInterface> = ({ data: { post, posts }, preview, ur
     );
 
     const morePosts = posts?.edges.filter((post) => post.node.slug !== uri);
+    if (morePosts.length >= 3) morePosts.pop();
 
     const {
         title,

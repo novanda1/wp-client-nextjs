@@ -4,6 +4,8 @@ import tw from 'twin.macro';
 import { Avatar, Box, CoverImage, Date, Heading } from '..';
 import { SinglePostType } from '../../types/SinglePostType';
 import { css } from '../../../stitches.config';
+import { Button } from '..';
+import { useRouter } from 'next/router';
 
 const PostPreviewContent = css({
     ...tw`text-lg leading-relaxed mb-4`,
@@ -16,6 +18,8 @@ const PostPreviewContent = css({
 const LinkSt = css(tw`hover:underline`);
 
 const PostPreview: React.FC<SinglePostType> = ({ title, coverImage, date, excerpt, author, slug }) => {
+    const router = useRouter();
+
     return (
         <div>
             <Box tws={tw`mb-5`}>

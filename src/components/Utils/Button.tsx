@@ -8,7 +8,7 @@ const Button: React.FC<{
     css?: any;
     tws?: TwStyle;
     onClick: any;
-    disabled: boolean;
+    disabled?: boolean;
 }> = ({ children, css, tws, onClick, disabled }) => {
     return (
         <ButtonSt onClick={onClick} disabled={disabled} css={{ ...css, ...tws }}>

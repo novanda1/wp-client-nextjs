@@ -6,6 +6,7 @@ import { PostsQuery } from '../generated/graphql';
 
 type PaginateContextType = {
     initialData?: PostsQuery;
+    initialLimit?: number;
     limit?: number;
     onChangeCursor?: any;
     cursor?: string;
