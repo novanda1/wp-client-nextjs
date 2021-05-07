@@ -2,8 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import PaginateContext from '../../context/PaginateContext';
 import { PostsDocument, PostsQuery } from '../../generated/graphql';
 import { fetchSWR } from '../../utils/fetcher';
-import HeroPost from './HeroPost';
-import MoreStories from './MoreStories';
+import { HeroPostAndMorePosts } from '..';
 
 const Page: React.FC<{ index: number }> = ({ index }) => {
     const { limit, initialLimit, cursor, onChangeCursor, initialData } = useContext(PaginateContext);
@@ -35,17 +34,7 @@ const Page: React.FC<{ index: number }> = ({ index }) => {
 
     return (
         <>
-            {index <= 0 && (
-                <HeroPost
-                    title={heroPost.title}
-                    coverImage={heroPost.featuredImage?.node}
-                    date={heroPost.date}
-                    author={heroPost.author?.node}
-                    slug={heroPost.slug}
-                    excerpt={heroPost.excerpt}
-                />
-            )}
-            {morePosts.length > 0 && <MoreStories useHeading={index < 0} posts={morePosts} />}
+            <HeroPostAndMorePosts index={index} heroPost={heroPost} morePosts={morePosts} />
         </>
     );
 };

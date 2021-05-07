@@ -1,0 +1,9 @@
+query PostsIdByCategoryId($categoryId: Int!) {
+    posts(where: { categoryId: $categoryId }) {
+        edges {
+            node {
+                id
+            }
+        }
+    }
+}

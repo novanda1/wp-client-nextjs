@@ -25,6 +25,7 @@ export { default as PostHeader } from './Post/PostHeader';
 export { default as PostTitle } from './Post/PostTitle';
 export { default as PostBody } from './Post/PostBody';
 export { default as Page } from './Post/Page';
+export { default as HeroPostAndMorePosts } from './Post/HeroPostAndMorePosts';
 
 // Home
 export { default as Intro } from './Home/Intro';

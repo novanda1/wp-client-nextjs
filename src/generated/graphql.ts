@@ -8858,6 +8858,28 @@ export type RefreshTokenMutation = (
   )> }
 );
 
+export type PostsIdByCategoryIdQueryVariables = Exact<{
+  categoryId: Scalars['Int'];
+}>;
+
+
+export type PostsIdByCategoryIdQuery = (
+  { __typename?: 'RootQuery' }
+  & { posts?: Maybe<(
+    { __typename?: 'RootQueryToPostConnection' }
+    & { pageInfo?: Maybe<(
+      { __typename?: 'WPPageInfo' }
+      & Pick<WpPageInfo, 'endCursor'>
+    )>, edges?: Maybe<Array<Maybe<(
+      { __typename?: 'RootQueryToPostConnectionEdge' }
+      & { node?: Maybe<(
+        { __typename?: 'Post' }
+        & Pick<Post, 'id'>
+      )> }
+    )>>> }
+  )> }
+);
+
 export type LastPostCursorQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -9088,6 +9110,20 @@ export const RefreshTokenDocument = gql`
   }
 }
     `;
+export const PostsIdByCategoryIdDocument = gql`
+    query PostsIdByCategoryId($categoryId: Int!) {
+  posts(where: {categoryId: $categoryId}) {
+    pageInfo {
+      endCursor
+    }
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
+    `;
 export const LastPostCursorDocument = gql`
     query LastPostCursor {
   posts(last: 1) {
@@ -9212,6 +9248,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     RefreshToken(variables: RefreshTokenMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<RefreshTokenMutation> {
       return withWrapper(() => client.request<RefreshTokenMutation>(RefreshTokenDocument, variables, requestHeaders));
+    },
+    PostsIdByCategoryId(variables: PostsIdByCategoryIdQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PostsIdByCategoryIdQuery> {
+      return withWrapper(() => client.request<PostsIdByCategoryIdQuery>(PostsIdByCategoryIdDocument, variables, requestHeaders));
     },
     LastPostCursor(variables?: LastPostCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LastPostCursorQuery> {
       return withWrapper(() => client.request<LastPostCursorQuery>(LastPostCursorDocument, variables, requestHeaders));
