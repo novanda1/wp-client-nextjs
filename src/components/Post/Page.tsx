@@ -16,10 +16,12 @@ const Page: React.FC<{ index: number }> = ({ index }) => {
         initialData,
     });
 
+    console.log(`limit`, limit);
+
     const result: PostsQuery = data;
 
     useEffect(() => {
-        if (!isError && !isLoading) onChangeCursor(result?.posts.pageInfo.endCursor);
+        if (!isError && !isLoading) onChangeCursor(result?.posts?.edges[data.posts.edges.length - 1].cursor);
     }, [result]);
 
     if (isError) {

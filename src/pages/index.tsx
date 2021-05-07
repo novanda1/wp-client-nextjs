@@ -1,21 +1,23 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { GetStaticProps, NextPage } from 'next';
+import React, { useState } from 'react';
 import tw from 'twin.macro';
 import { Box, Button, Container, Intro, Layout, Page } from '../components';
 import { PaginateProvider } from '../context/PaginateContext';
-import { LastPostCursorDocument, PostsDocument } from '../generated/graphql';
+import { LastPostCursorDocument, PostsDocument, PostsQuery } from '../generated/graphql';
 import { fetchData, fetcher } from '../utils/fetcher';
+import { PreviewDataInterface } from './api/preview';
 
 const initialLimit = 5;
-const getLimit = (pageQuery: number) => {
-    if (pageQuery <= 1) return initialLimit;
-    else return pageQuery * 5 - 1;
-};
 
-const Home = ({ preview, initialData, lastPostCursor, limit }) => {
-    const router = useRouter();
-    const [realLimit, setRealLimit] = useState(limit);
+interface HomeInterface {
+    preview: boolean;
+    initialData: PostsQuery;
+    lastPostCursor: string;
+    limit: number;
+    previewData?: PreviewDataInterface;
+}
 
+const Home: NextPage<HomeInterface> = ({ preview, initialData, lastPostCursor }) => {
     const [cursor, setCursor] = useState('first');
     const [page, setPage] = useState(1);
     const pages = [<Page key={0} index={0} />];
@@ -26,14 +28,11 @@ const Home = ({ preview, initialData, lastPostCursor, limit }) => {
 
     const handlePagination = async () => {
         const newPage = page + 1;
-
-        await router.push(`/?page=${newPage}`, undefined, { shallow: true });
         setPage(newPage);
     };
 
-    useEffect(() => {
-        if (router.query.page) setRealLimit(getLimit(+router.query.page));
-    }, [cursor]);
+    console.log(`cursor`, cursor);
+    console.log(`lastPostCursor`, lastPostCursor);
 
     return (
         <Layout preview={preview}>
@@ -43,7 +42,7 @@ const Home = ({ preview, initialData, lastPostCursor, limit }) => {
                 <PaginateProvider
                     value={{
                         initialData,
-                        initialLimit: realLimit,
+                        initialLimit: initialLimit,
                         limit: initialLimit - 1,
                         cursor,
                         onChangeCursor: (newCursor: string) => {
@@ -72,20 +71,20 @@ const Home = ({ preview, initialData, lastPostCursor, limit }) => {
     );
 };
 
-Home.getInitialProps = async ({ req, previewData }) => {
-    const pageQuery = req?.url?.split('page=')[1] || 0;
-    const limit = getLimit(pageQuery) || 0;
+export default Home;
+
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+    const limit = initialLimit;
 
     const initialData = await fetchData({ query: PostsDocument, variables: { limit } });
     const lastPostCursorData = await fetcher({ query: LastPostCursorDocument });
     const lastPostCursor = lastPostCursorData.posts.edges[0].cursor;
 
     return {
-        preview: previewData?.preview || false,
-        initialData,
-        lastPostCursor,
-        limit,
+        props: {
+            preview: previewData?.preview || false,
+            initialData,
+            lastPostCursor,
+        },
     };
 };
-
-export default Home;

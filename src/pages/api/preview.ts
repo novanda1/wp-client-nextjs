@@ -3,6 +3,16 @@ import { API_URL, WORDPRESS_PREVIEW_SECRET } from '../../constants';
 import { getSdk, GetTokenDocument, PostIdType } from '../../generated/graphql';
 import { fetcher } from '../../utils/fetcher';
 
+export interface PreviewDataInterface {
+    preview?: boolean;
+    post?: {
+        id: number;
+        slug: string;
+        status: string;
+    };
+    token?: string;
+}
+
 export default async function preview(req, res) {
     const { secret, id, slug } = req.query;
 
