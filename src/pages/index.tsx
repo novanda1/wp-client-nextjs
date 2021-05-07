@@ -31,9 +31,6 @@ const Home: NextPage<HomeInterface> = ({ preview, initialData, lastPostCursor })
         setPage(newPage);
     };
 
-    console.log(`cursor`, cursor);
-    console.log(`lastPostCursor`, lastPostCursor);
-
     return (
         <Layout preview={preview}>
             <Container>

@@ -16,8 +16,6 @@ const Page: React.FC<{ index: number }> = ({ index }) => {
         initialData,
     });
 
-    console.log(`limit`, limit);
-
     const result: PostsQuery = data;
 
     useEffect(() => {
